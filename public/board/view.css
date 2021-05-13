@@ -1,0 +1,38 @@
+#main{
+    margin-top:30px;
+}
+
+.write_gnb{
+    border-bottom: 1px solid #1b191985;
+    display: flex;
+}
+
+.write_gnb  > ul > li{
+    display: inline-block;
+}
+
+.left_gnb{
+    float: left;
+    width: 50%;
+}
+
+.right_gnb{
+    justify-content: flex-end;
+    width: 50%;
+    text-align: right;
+}
+
+.view_write{
+    margin-top: 30px;
+    min-height: 500px;
+    border: 1px solid #ededed;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#footer{
+    margin-top: 30px;
+}
+
+#footer > input{float:right; margin-left:30px}
+#footer > a:nth-child(2){float:right;}

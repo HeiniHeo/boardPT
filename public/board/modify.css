@@ -1,0 +1,17 @@
+.write_body{
+    
+}
+
+/* FOOTER */
+
+#footer{
+    margin-top: 30px;
+}
+
+#footer > input{
+    float: right;
+}
+
+#footer > a{
+    float: left;
+}
