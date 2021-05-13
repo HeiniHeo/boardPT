@@ -11,6 +11,57 @@
 </head>
 
 <body>
-    
+    <div id="wrap" class="w100">
+
+        <!--HEADER-->
+        {% for item in boardList %}
+        <div class="header center">
+            <div class="head_title">
+                <h1>{{item.title}}</h1>
+            </div>
+            <div class="small_info">
+                <ul>
+                    <li class="logout"><a href="/logout">
+                        <input type="button" class="btn" value="logout">
+                        </a>
+                    </li>
+                    <li class="user_image"><a href="user_info"><img src="https://img1.daumcdn.net/thumb/C428x428/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Ftistory_admin%2Fstatic%2Fmanage%2Fimages%2Fr3%2Fdefault_L.png"></a></li>
+                    <li class="user_name"><a href="/user_info">{{item.userid}}</a></li>
+                </ul>
+            </div>
+        </div>
+        
+
+
+        <form action="/board/write" method="post">
+
+            <!--TEXT INPUT-->
+
+            <div id="main" class="center">
+                <div class="write_gnb">
+                    <ul class="left_gnb">
+                        <li class="gnb_name">{{item.userid}} ({{item.username}})</li>
+                    </ul>
+                    <ul class="right_gnb">
+                        <li class="gnb_date">{{item.date}}</li> 
+                        <li class="gnb_hit">{{item.hit}}</li>
+                    </ul>
+                </div>
+                <div class="view_write write_box w100">
+                    {{item.content}}
+                </div>
+            </div>
+
+            <!--FOOTER-->
+            <div id="footer" class="center">
+                <input type="submit" class="btn" value="MODIFY">
+                <a href="/board/list"><input type="button" class="btn" value="BACK"></a>
+                <a href="/board/list"><input type="button" class="btn" value="DELETE"></a>
+            </div>
+
+        </form>
+        {% endfor %}
+    </div>
+
 </body>
 </html>
