@@ -12,7 +12,7 @@
                     <div class = "user_right_line"><span>이름</span>엄신우</div>
                 </div>
             </div>
-            <button class="user_close"><img class = "user_close_img" src = "/user/svgexport-3.png" style="transform:rotate(270deg)"></button>
+            <button class="user_close"><img class = "user_close_img open" src = "/user/svgexport-3.png"></button>
         </div>
     </div>
 <!--절취선-->
@@ -26,8 +26,10 @@
 
         if(state){
             user_center.setAttribute('class', 'user_closed');
+            user_close_img.setAttribute('class','user_close_img closed')
         } else{
             user_center.setAttribute('class', 'user_open');
+            user_close_img.setAttribute('class', 'user_close_img open')
         }
         state=!state;
         console.log(state)

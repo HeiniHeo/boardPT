@@ -92,15 +92,25 @@ body{
 }
 
 .user_closed{
-    bottom:-50vh;
-    transition: all 3s ease-in-out;
+    bottom:-80vh;
+    transition: all 1s ease-in-out;
 }
 
 .user_open{
     bottom:0vh;
-    transition: all 3s ease-in-out;
+    transition: all 1s ease-in-out;
 }
 
 #user_content{
     position:absolute;
+}
+
+.user_close_img.open{
+    transform:rotate(270deg);
+    transition: all 0.1s ease-in-out;
+}
+
+.user_close_img.closed{
+    transform:rotate(90deg);
+    transition: all 0.1s ease-in-out;
 }
