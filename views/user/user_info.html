@@ -1,17 +1,36 @@
-
-        <div id = "center"  class="open">
-            <div class = "left">
-                <img class = "img" src = "./user/svgexport-1 (1).svg">
+<link rel="stylesheet" href="/userinfo.css">
+        <div id = "user_center"  class="user_open">
+            <div class = "user_left">
+                <img class = "user_img" src = "/user/svgexport-1 (1).svg">
             </div>
-            <p class = "divider"></p>
-            <div class = "right">
-                <div class = "right_ctn">
+            <p class = "user_divider"></p>
+            <div class = "user_right">
+                <div class = "user_right_ctn">
                 <h2>INFORMATION</h2>
-                    <div class = "right_line"><span>아이디</span>dfassf</div>
-                    <div class = "right_line"><span>이메일</span>dfassf@gmail.com</div>
-                    <div class = "right_line"><span>이름</span>엄신우</div>
+                    <div class = "user_right_line"><span>아이디</span>dfassf</div>
+                    <div class = "user_right_line"><span>이메일</span>dfassf@gmail.com</div>
+                    <div class = "user_right_line"><span>이름</span>엄신우</div>
                 </div>
             </div>
-            <button class="back"><img src = "./user/svgexport-3.png"></button>
+            <button class="user_close"><img class = "user_close_img" src = "/user/svgexport-3.png" style="transform:rotate(270deg)"></button>
         </div>
     </div>
+<!--절취선-->
+<script type="text/javascript">
+    //닫기버튼
+    let state = true;
+    let user_center = document.querySelector('#user_center');
+    let user_close = document.querySelector('.user_close');
+    let user_close_img = document.querySelector('.user_close_img');
+    function opentoggle(){
+
+        if(state){
+            user_center.setAttribute('class', 'user_closed');
+        } else{
+            user_center.setAttribute('class', 'user_open');
+        }
+        state=!state;
+        console.log(state)
+    }
+   user_close.addEventListener('click',opentoggle);
+</script>

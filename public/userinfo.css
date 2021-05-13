@@ -10,28 +10,28 @@ a{
 body{
     overflow:hidden;
 }
-
+/*
 #wrap{
     width:80%;
     height:100vh;
     position:absolute;
-}
+}*/
 
-#center{
+#user_center{
     width:1200px;
     height:600px;
     margin: 0 auto;
     position:relative;
 }
 
-.left{
+.user_left{
     width:500px;
     height:600px;
     float:left;
     position:relative;
 }
 
-.right{
+.user_right{
     width:700px;
     height:600px;
     float:left;
@@ -40,13 +40,13 @@ body{
     position:relative;
 }
 
-.back{
+.user_close{
     position:absolute;
     right:100px;
     top:120px;
 }
 
-.img{
+.user_img{
     width:250px;
     height:250px;
     position:absolute;
@@ -58,7 +58,7 @@ body{
     box-sizing: border-box;
 }
 
-.divider{
+.user_divider{
     background:black;
     width:1px;
     height:400px;
@@ -68,45 +68,39 @@ body{
     top:15%;
 }
 
-.right_ctn{
+.user_right_ctn{
     position:absolute;
     left:15%;
     top:30%;
 }
 
-.right>h2{
+.user_right>h2{
     margin-bottom:40px;
 }
 
-.right_line{
+.user_right_line{
     width:400px;
     display:block;
     margin:20px;
 }
 
-.right_line>span{
+.user_right_line>span{
     width:80px;
     margin-right:20px;
     display:block;
     float:left;
 }
 
-.closed{
-    bottom:-100vh;
-    transition: all 5s ease-in-out;
+.user_closed{
+    bottom:-50vh;
+    transition: all 3s ease-in-out;
 }
 
-.open{
+.user_open{
     bottom:0vh;
-    transition: all 5s ease-in-out;
-}
-.closed2{
-    display:block;
+    transition: all 3s ease-in-out;
 }
 
-.open2{
-    display:none;
-}
-#content{
+#user_content{
     position:absolute;
 }
