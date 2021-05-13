@@ -1,4 +1,5 @@
 const express = require('express');
+<<<<<<< HEAD
 const app = express();
 const bodyParser = require('body-parser');
 const nunjucks = require('nunjucks');
@@ -35,4 +36,14 @@ app.use('/',router)
 
 app.listen(PORT,() => {
     console.log(`server listening on port ${PORT}`);
+=======
+const router = require('./routers/index');
+
+const app = express();
+
+app.use('/',router);
+
+app.listen(3000,()=>{
+    console.log('PORT 3000')
+>>>>>>> 55a43fea0f6b32d312e911834587df96f394ec4a
 })

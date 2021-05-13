@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WRTIE</title>
+    <link rel="stylesheet" href="../../public/index.css">
+    <link rel="stylesheet" href="../../public/board/write.css">
+</head>
+<body>
+    <div id="wrap" class="w100">
+
+        <!--HEADER-->
+        <div class="header center">
+            <div class="head_title">
+                <h1>글쓰기</h1>
+            </div>
+            <div class="user_info">
+                <ul>
+                    <li class="logout"><a href="/logout">
+                        <input type="button" class="btn" value="logout">
+                        </a>
+                    </li>
+                    <li class="user_image"><a href="user_info"><img src="https://img1.daumcdn.net/thumb/C428x428/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Ftistory_admin%2Fstatic%2Fmanage%2Fimages%2Fr3%2Fdefault_L.png"></a></li>
+                    <li class="user_name"><a href="/user_info"></a></li>
+                </ul>
+            </div>
+        </div>
+
+        
+        <form action="/board/write" method="post">
+
+            <!--TEXT INPUT-->
+
+            <div id="main" class="center">
+                <div class="write_title write_box w100">
+                    <input type="text">
+                </div>
+                <div class="write_body write_box w100">
+                    <input type="text">
+                </div>
+            </div>
+
+            <!--FOOTER-->
+            <div id="footer" class="center">
+                <input type="submit" class="btn" value="WRITE">
+                <a href="/board/list"><input type="button" class="btn" value="BACK"></a>
+            </div>
+
+        </form>
+    </div>
+    <div class="user_info">
+    {% include ../../.%}
+    </div>
+</body>
+</html>
