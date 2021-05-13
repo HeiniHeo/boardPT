@@ -48,7 +48,7 @@ button{
 }
 
 .head_title{
-    margin: 0 300px;
+    margin: 0 30%;
     display: inline-block;
     
 }
@@ -57,46 +57,54 @@ button{
 .small_info{
     height: 100%;
     text-align: right;
-    width: 250px;
+    width: 150px;
+}
+
+.small_info > ul {
+    height: 100%;
 }
 
 .logout{
-    text-align: right;
+    text-align: left;
     width: 50%;
-    height: 50px;
+    height: 40px;
     float:left;
-    margin-top: 30px;
+    margin-top: 35px;
 }
 
 .logout > a{
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .logout > a > input{
-    height: 40px;
-    width: 90px;
-    margin: 0 10px 0 0;
+    height: 30px;
+    width: 60px;
 }
 
 .user_image{
     display: inline-block;
-    width: 50%;
-    height: 80px;
+    width: 60px;
+    height: 60px;
+    margin: 15px 10px 2px 5px;
 }
 
 .user_image > a > img{
-    margin: 5px 15px 0 0;
     display: inline;
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     border-radius: 35px;
+    border: 1px solid red;
 }
 
 .user_name{
     float:right;
-    width: 40%;
+    width: 50%;
     height: 20px;
     text-align: center;
+}
+
+.user_name > a{
+    font-size: 12px;
 }
 
 /* WRITE BODY */
