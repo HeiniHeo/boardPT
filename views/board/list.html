@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIST</title>
+    <link rel="stylesheet" href="../../public/index.css">
+    <link rel="stylesheet" href="../../public/board/list.css">
+</head>
+
+<body>
+    <div id="wrap" class="w100">
+        <!--HEADER contains title & userinfo-->
+        <div class="header center">
+            <div class="head_title">
+                <h1>철원의 오대쌀</h1>
+            </div>
+            <div class="user_info">
+                <ul>
+                    <li class="logout"><a href="/logout">
+                        <input type="button" class="btn" value="logout">
+                        </a>
+                    </li>
+                    <li class="user_image"><a href="user_info"></a></li>
+                    <li class="user_name"><a href="/user_info"></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!--MAIN board-->
+        <div id="main" class="center">
+            <div id="board">
+                <table id="list">   
+                    <tr>
+                        <td>No.</td>
+                        <td>Title</td>
+                        <td>Writer</td>
+                        <td>Date</td>
+                        <td>Hit</td>
+                    </tr>
+
+                    {% for item in boardList %}
+
+                    <tr>
+                        <td>{{item.No.}}</td>
+                        <td>{{item.boardtitle}}</td>
+                        <td>{{item.boardwriter}}</td>
+                        <td>{{item.boarddt}}</td>
+                        <td>{{item.boardhit}}</td>
+                    </tr>
+
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+        <!--FOOTER contains button & pagenation-->
+        <div id="footer" class="center">
+            <a href="/board/write"><input type="button" class="btn" value="WRITE"></a>
+        </div>
+
+    </div>
+</body>
+
+</html>
