@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no,"> 
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no,">
     <title>VIEW</title>
     <link rel="stylesheet" href="/index.css">
     <link rel="stylesheet" href="/board/view.css">
@@ -24,47 +24,59 @@
             <div class="small_info">
                 <ul>
                     <li class="logout"><a href="/logout">
-                        <input type="button" class="btn" value="logout">
+                            <input type="button" class="btn" value="logout">
                         </a>
                     </li>
-                    <li class="user_image user_info_pop"><img src="https://img1.daumcdn.net/thumb/C428x428/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Ftistory_admin%2Fstatic%2Fmanage%2Fimages%2Fr3%2Fdefault_L.png"></li>
+                    <li class="user_image user_info_pop"><img
+                            src="https://img1.daumcdn.net/thumb/C428x428/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Ftistory_admin%2Fstatic%2Fmanage%2Fimages%2Fr3%2Fdefault_L.png">
+                    </li>
                     <li class="user_name user_info_pop">{{item.userid}}</li>
                 </ul>
             </div>
         </div>
-        
 
 
-        <form action="/board/write" method="post">
 
-            <!--TEXT INPUT-->
 
-            <div id="main" class="center">
-                <div class="write_gnb">
-                    <ul class="left_gnb">
-                        <li class="gnb_name">{{item.writer}} ({{item.writer}})</li>
-                    </ul>
-                    <ul class="right_gnb">
-                        <li class="gnb_date">{{item.date}}</li> 
-                        <li class="gnb_hit">{{item.hit}}</li>
-                    </ul>
-                </div>
-                <div class="view_write w100">
-                    {{item.content}}
-                </div>
+
+        <!--TEXT INPUT-->
+
+        <div id="main" class="center">
+            <div class="write_gnb">
+                <ul class="left_gnb">
+                    <li class="gnb_name">{{item.writer}} ({{item.writer}})</li>
+                </ul>
+                <ul class="right_gnb">
+                    <li class="gnb_date">{{item.date}}&nbsp;&nbsp;</li>
+                    <li class="gnb_hit">| &nbsp; {{item.hit}} </li>
+                </ul>
             </div>
-
-            <!--FOOTER-->
-            <div id="footer" class="center">
-                <input type="submit" class="btn" value="MODIFY">
-                <a href="/board/list"><input type="button" class="btn" value="BACK"></a>
-                <a href="/board/list"><input type="button" class="btn" value="DELETE"></a>
+            <div class="view_write w100">
+                <pre>{{item.content}}</pre>
             </div>
+        </div>
 
-        </form>
+        <!--FOOTER-->
+        <div id="footer" class="center">
+            <a href="/board/modify?id={{item.id}}"><input type="button" class="btn" value="MODIFY"></a>
+            <a href="/board"><input type="button" class="btn" value="BACK"></a>
+            <a id="deleteBtn"><input type="button" class="btn" value="DELETE"></a>
+        </div>
+        <script type="text/javascript">
+            let deleteBtn = document.querySelector('#deleteBtn');
+
+            deleteBtn.addEventListener('click', function () {
+                if (confirm("정말 삭제하시겠습니까?")) {
+                    location.href = "/board/delete?id={{item.id}}"
+                } else {
+                    location.href = "/board/view?id={{item.id}}"
+                }
+            })
+        </script>
+
         {% endfor %}
 
     </div>
 
-{% include '../user/user_info.html' %}
-{% include '../template/bottom.html' %}
+    {% include '../user/user_info.html' %}
+    {% include '../template/bottom.html' %}

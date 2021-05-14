@@ -35,13 +35,13 @@
 
         {% for item in boardList %}
 
-        <form action="/board/write" method="post">
+        <form action="/board/modify_success" method="post">
 
             <!--TEXT INPUT-->
 
             <div id="main" class="center">
                 <div class="write_title write_box w100">
-                    <input type="text" value="{{item.title}}">
+                    <input type="text" name="title" value="{{item.title}}">
                 </div>
                 <div class="write_body write_box w100">
                     <textarea name="content">{{item.content}}</textarea>
@@ -51,7 +51,8 @@
             <!--FOOTER-->
             <div id="footer" class="center">
                 <input type="submit" class="btn" value="MODIFY">
-                <a href="/board/list"><input type="button" class="btn" value="BACK"></a>
+                <a href="/board"><input type="button" class="btn" value="BACK"></a>
+                <textarea style="display: none;" class = "userid" name="boardid">{{boardid}}</textarea>
             </div>
 
         </form>

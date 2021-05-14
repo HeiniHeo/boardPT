@@ -21,27 +21,29 @@
         console.log(state)
     }    */
 
-    function openPopup(){
-        if(state2){
+    function openPopup() {
+        if (state2) {
             user_center.setAttribute('class', 'user_open');
-            user_close_img.setAttribute('class','user_close_img open');
+            user_close_img.setAttribute('class', 'user_close_img open');
             console.log('ifstatetrue')
-        } else{
+        } else {
             user_center.setAttribute('class', 'user_closed');
             user_close_img.setAttribute('class', 'user_close_img closed');
             console.log('ifstatefalse')
         }
-        state2=!state2;
+        state2 = !state2;
         console.log(state2)
     }
 
-    user_close.addEventListener('click',openPopup);
-    user_image.addEventListener('click',openPopup);
-    user_name.addEventListener('click',openPopup);
+    user_close.addEventListener('click', openPopup);
+    user_image.addEventListener('click', openPopup);
+    user_name.addEventListener('click', openPopup);
 
 
-    button.addEventListener('click',function(){
-        content.setAttribute('class','closed2');
+    button.addEventListener('click', function () {
+        content.setAttribute('class', 'closed2');
     })
-</script> -->
+
+</script>
+
 </html>

@@ -40,24 +40,26 @@ button{
 /* HEADER  title && user_info */
 
 .header{
-    display: flex;
-    justify-content: flex-end;
+    position: relative;
     height: 100px;
     align-items: center;
     margin-top: 50px;
 }
 
 .head_title{
-    margin: 0 30%;
-    display: inline-block;
-    
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    float: left;
 }
 
 /* user_info small */
 .small_info{
-    height: 100%;
+    position: absolute;
+    height: 100px;
     text-align: right;
-    width: 150px;
+    width: 200px;
+    right: 0px;
 }
 
 .small_info > ul {
@@ -66,26 +68,25 @@ button{
 
 .logout{
     text-align: left;
-    width: 50%;
+    position: absolute;
+    right:0px;
+    bottom: 5px;
+    width: 100px;
     height: 40px;
-    float:left;
-    margin-top: 35px;
-}
-
-.logout > a{
-    font-size: 20px;
 }
 
 .logout > a > input{
-    height: 30px;
+    height: 20px;
     width: 60px;
+    font-size: 12px;
+    line-height: 0px;
 }
 
 .user_image{
-    display: inline-block;
+    float:left;
     width: 60px;
     height: 60px;
-    margin: 15px 10px 2px 5px;
+    margin: 20px 10px 2px 20px;
 }
 
 .user_image > img{
@@ -97,18 +98,26 @@ button{
 }
 
 .user_name{
-    float:right;
-    width: 50%;
+    position: absolute;
+    right:0px;
+    top: 30px;
+    width: 100px;
     height: 20px;
-    text-align: center;
-    font-size: 12px;
+    text-align: left;
+    font-size: 15px;
 }
 
 /* WRITE BODY */
 
 .write_title{
-    height: 30px;
+    height: 40px;
     margin-top: 30px;
+}
+
+.write_title > input{
+    font-size: 16px;
+    padding-left: 10px;
+    box-sizing: border-box;
 }
 
 .write_body{
@@ -119,6 +128,9 @@ button{
 .write_box > textarea{
     height: 100%;
     width: 100%;
+    font-size: 20px;
+    padding: 15px;
+    box-sizing: border-box;
 }
 
 .write_box > input{
