@@ -1,3 +1,4 @@
+  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,7 @@
 </head>
 <body>
     <div id="wrap" class="w100">
-        {% for item in boardList %}
+        {% for item in userinfo %}
         <!--HEADER-->
         <div class="header center">
             <div class="head_title">
@@ -22,14 +23,14 @@
                         <input type="button" class="btn" value="logout">
                         </a>
                     </li>
-                    <li class="user_image"><a href="user_info"><img src="https://img1.daumcdn.net/thumb/C428x428/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Ftistory_admin%2Fstatic%2Fmanage%2Fimages%2Fr3%2Fdefault_L.png"></a></li>
-                    <li class="user_name"><a href="/user_info">{{item.userid}}</a></li>
+                    <li class="user_image user_info_pop"><a><img src="https://img1.daumcdn.net/thumb/C428x428/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Ftistory_admin%2Fstatic%2Fmanage%2Fimages%2Fr3%2Fdefault_L.png"></a></li>
+                    <li class="user_name user_info_pop"><a>{{item.userid}}</a></li>
                 </ul>
             </div>
         </div>
         {% endfor %}
 
-        
+        {% for item in boardList %}
         <form action="/board/write" method="post">
 
             <!--TEXT INPUT-->
@@ -50,6 +51,7 @@
             </div>
 
         </form>
+        {% endfor %}
     </div>
 
 {% include '../template/bottom.html' %}
