@@ -88,8 +88,8 @@ button{
     margin: 15px 10px 2px 5px;
 }
 
-.user_image > a > img{
-    display: inline;
+.user_image > img{
+    display: inline-block;
     width: 60px;
     height: 60px;
     border-radius: 35px;
@@ -101,9 +101,6 @@ button{
     width: 50%;
     height: 20px;
     text-align: center;
-}
-
-.user_name > a{
     font-size: 12px;
 }
 

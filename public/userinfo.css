@@ -22,6 +22,8 @@ body{
     height:600px;
     margin: 0 auto;
     position:relative;
+    background: white;
+    box-shadow: 5px 5px 3px gray;
 }
 
 .user_left{
@@ -92,15 +94,15 @@ body{
 }
 
 .user_closed{
-    bottom:-80vh;
+    bottom:-30vh;
     transition: all 1s ease-in-out;
 }
 
 .user_open{
-    bottom:0vh;
+    bottom:60vh;
     transition: all 1s ease-in-out;
 }
-
+/*close -50 open 0 */
 #user_content{
     position:absolute;
 }

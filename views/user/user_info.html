@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="/userinfo.css">
-        <div id = "user_center"  class="user_open">
+
+        <div id = "user_center"  class="user_closed">
             <div class = "user_left">
                 <img class = "user_img" src = "/user/svgexport-1 (1).svg">
             </div>
@@ -15,24 +15,3 @@
             <button class="user_close"><img class = "user_close_img open" src = "/user/svgexport-3.png"></button>
         </div>
     </div>
-<!--절취선-->
-<script type="text/javascript">
-    //닫기버튼
-    let state = true;
-    let user_center = document.querySelector('#user_center');
-    let user_close = document.querySelector('.user_close');
-    let user_close_img = document.querySelector('.user_close_img');
-    function opentoggle(){
-
-        if(state){
-            user_center.setAttribute('class', 'user_closed');
-            user_close_img.setAttribute('class','user_close_img closed')
-        } else{
-            user_center.setAttribute('class', 'user_open');
-            user_close_img.setAttribute('class', 'user_close_img open')
-        }
-        state=!state;
-        console.log(state)
-    }
-   user_close.addEventListener('click',opentoggle);
-</script>
