@@ -8,6 +8,7 @@
     <title>LIST</title>
     <link rel="stylesheet" href="/index.css">
     <link rel="stylesheet" href="/board/list.css">
+    <link rel="stylesheet" href="/userinfo.css">
 </head>
 
 <body>
@@ -27,8 +28,8 @@
                         <input type="button" class="btn" value="logout">
                         </a>
                     </li>
-                    <li class="user_image user_info_pop"><a><img src="https://img1.daumcdn.net/thumb/C428x428/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Ftistory_admin%2Fstatic%2Fmanage%2Fimages%2Fr3%2Fdefault_L.png"></a></li>
-                    <li class="user_name user_info_pop"><a>{{item.userid}}</a></li>
+                    <li class="user_image user_info_pop" ><img src="https://img1.daumcdn.net/thumb/C428x428/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Ftistory_admin%2Fstatic%2Fmanage%2Fimages%2Fr3%2Fdefault_L.png"></li>
+                    <li class="user_name user_info_pop">aaaa{{item.userid}}</li>
                 </ul>
             </div>
         </div>
@@ -67,4 +68,5 @@
 
     </div>
 
+{% include '../user/user_info.html' %}
 {% include '../template/bottom.html' %}

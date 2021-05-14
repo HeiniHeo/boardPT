@@ -1,13 +1,44 @@
 </body>
-<!-- <script type="text/javascript">
-    btn=document.querySelector('.back');
-    wrap=document.querySelector('#center');
+<script type="text/javascript">
+    //닫기버튼
+    let state = true;
+    let state2 = true;
+    let user_center = document.querySelector('#user_center');
+    let user_close = document.querySelector('.user_close');
+    let user_close_img = document.querySelector('.user_close_img');
+    let user_image = document.querySelector('.user_image');
+    let user_name = document.querySelector('.user_name');
+    /*
+    function closePopup(){
+        if(state){
+            user_center.setAttribute('class', 'user_closed');
+            user_close_img.setAttribute('class','user_close_img closed')
+        } else{
+            user_center.setAttribute('class', 'user_open');
+            user_close_img.setAttribute('class', 'user_close_img open')
+        }
+        state=!state;
+        console.log(state)
+    }    */
 
-    btn.addEventListener('click',function(){
-        wrap.setAttribute('class','closed')
-    })
-    content=document.querySelector('#content');
-    button=document.querySelector('.btn2')
+    function openPopup(){
+        if(state2){
+            user_center.setAttribute('class', 'user_open');
+            user_close_img.setAttribute('class','user_close_img open');
+            console.log('ifstatetrue')
+        } else{
+            user_center.setAttribute('class', 'user_closed');
+            user_close_img.setAttribute('class', 'user_close_img closed');
+            console.log('ifstatefalse')
+        }
+        state2=!state2;
+        console.log(state2)
+    }
+
+    user_close.addEventListener('click',openPopup);
+    user_image.addEventListener('click',openPopup);
+    user_name.addEventListener('click',openPopup);
+
 
     button.addEventListener('click',function(){
         content.setAttribute('class','closed2');
