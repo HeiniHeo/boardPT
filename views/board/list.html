@@ -15,7 +15,7 @@
     <div id="wrap" class="w100">
         <!--HEADER contains title & userinfo-->
 
-
+        {% for item in userinfo %}
 
         <div class="header center">
             <div class="head_title">
@@ -27,11 +27,13 @@
                         <input type="button" class="btn" value="logout">
                         </a>
                     </li>
-                    <li class="user_image"><a href="user_info"><img src="https://img1.daumcdn.net/thumb/C428x428/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Ftistory_admin%2Fstatic%2Fmanage%2Fimages%2Fr3%2Fdefault_L.png"></a></li>
-                    <li class="user_name"><a href="/user_info"></a></li>
+                    <li class="user_image user_info_pop"><a><img src="https://img1.daumcdn.net/thumb/C428x428/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Ftistory_admin%2Fstatic%2Fmanage%2Fimages%2Fr3%2Fdefault_L.png"></a></li>
+                    <li class="user_name user_info_pop"><a>{{item.userid}}</a></li>
                 </ul>
             </div>
         </div>
+
+        {% endfor %}
 
         <!--MAIN board-->
         <div id="main" class="center">
@@ -44,8 +46,16 @@
                         <td>Date</td>
                         <td>Hit</td>
                     </tr>
+                    {% for item in boardList %}
 
-
+                    <tr>
+                        <td>{{item.idx}}</td>
+                        <td>{{item.title}}</td>
+                        <td>{{item.writer}}</td>
+                        <td>{{item.date}}</td>
+                        <td>{{item.hit}}</td>
+                    </tr>
+                    {% endfor %}
                     
                 </table>
             </div>
