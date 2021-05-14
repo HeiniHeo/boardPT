@@ -49,8 +49,8 @@
                     {% for item in boardList %}
 
                     <tr>
-                        <td>{{item.idx}}</td>
-                        <td>{{item.title}}</td>
+                        <td>{{item.id}}</td>
+                        <td><a href="/board/view?id={{item.id}}">{{item.title}}</a></td>
                         <td>{{item.writer}}</td>
                         <td>{{item.date}}</td>
                         <td>{{item.hit}}</td>
@@ -60,8 +60,6 @@
                 </table>
             </div>
         </div>
-
-        <div>dddd</div>
 
         <div id="footer" class="center">
             <a href="/board/write"><input type="button" class="btn" value="WRITE"></a>

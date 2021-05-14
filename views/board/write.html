@@ -30,17 +30,16 @@
         </div>
         {% endfor %}
 
-        {% for item in boardList %}
-        <form action="/board/write" method="post">
+        <form action="/board/write_success" method="post">
 
             <!--TEXT INPUT-->
 
             <div id="main" class="center">
                 <div class="write_title write_box w100">
-                    <input type="text">
+                    <input type="text" name="title">
                 </div>
                 <div class="write_body write_box w100">
-                    <input type="text">
+                    <textarea name="content"></textarea>
                 </div>
             </div>
 
@@ -51,7 +50,6 @@
             </div>
 
         </form>
-        {% endfor %}
     </div>
 
 {% include '../template/bottom.html' %}

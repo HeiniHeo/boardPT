@@ -119,6 +119,11 @@ button{
     margin-top: 30px;
 }
 
+.write_box > textarea{
+    height: 100%;
+    width: 100%;
+}
+
 .write_box > input{
     height: 100%;
     width: 100%;
