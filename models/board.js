@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const Sequelize = require('sequelize');
 const moment = require('moment');
 
@@ -43,5 +42,3 @@ module.exports = class Board extends Sequelize.Model{
         });
     };
 };
-=======
->>>>>>> heini
