@@ -6,5 +6,7 @@ router.get('/write',controller.write);
 router.get('/view',controller.view);
 router.get('/modify',controller.modify);
 router.get('/', controller.board);
+router.post('/list',controller.board);
+
 
 module.exports = router;

@@ -1,3 +1,5 @@
+const { join } = require("../user/user.controller");
+
 let board = (req, res) => {
     res.render('./board/list.html');
 };
@@ -13,6 +15,7 @@ let view = (req,res)=>{
 let modify = (req,res)=>{
     res.render('./board/modify.html');
 };
+
 
 module.exports = {
     board:board,
