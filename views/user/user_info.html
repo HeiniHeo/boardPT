@@ -7,9 +7,11 @@
             <div class = "user_right">
                 <div class = "user_right_ctn">
                 <h2>INFORMATION</h2>
-                    <div class = "user_right_line"><span>아이디</span>dfassf</div>
-                    <div class = "user_right_line"><span>이메일</span>dfassf@gmail.com</div>
-                    <div class = "user_right_line"><span>이름</span>엄신우</div>
+                {% for info in userinfo %}
+                    <div class = "user_right_line"><span>아이디</span>{{info.userid}}</div>
+                    <div class = "user_right_line"><span>이메일</span>{{info.usermail}}</div>
+                    <div class = "user_right_line"><span>이름</span>{{info.username}}</div>
+                    {% endfor %}
                 </div>
             </div>
             <button class="user_close"><img class = "user_close_img open" src = "/user/svgexport-3.png"></button>

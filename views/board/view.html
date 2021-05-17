@@ -66,7 +66,7 @@
                 if (confirm("정말 삭제하시겠습니까?")) {
                     location.href = "/board/delete?id={{item.id}}"
                 } else {
-                    location.href = "/board/view?id={{item.id}}"
+                    event.preventDefault();
                 }
             })
         </script>

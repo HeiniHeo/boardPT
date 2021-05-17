@@ -11,6 +11,13 @@ let board = async (req, res) => {
     let page = (req.query.id == undefined) ? 1 : req.query.id;
     let offset = ( req.query.id == undefined) ? 0 : 9 * (page - 1);
     let page_array = [];
+    let userid = req.session.uid;
+
+    let getuserinfo = await User.findAll({
+        where: {
+            userid: userid
+        }
+    })
 
     let resultsall = await Board.findAll({})
     .then((resultall) => {
@@ -20,11 +27,10 @@ let board = async (req, res) => {
         console.log(error);
     });
 
-
     let results = await Board.findAll({
         limit:9,
+        order:[['id','DESC']],
         offset:offset,
-        order:[['id','DESC']]
     })
         .then((result) => {
             let total_record = result.length;
@@ -33,17 +39,18 @@ let board = async (req, res) => {
                 page_array.push(i);
             };
             result.forEach(ele => {
-                ele.num = resultsall;
+                ele.num = resultsall - offset;
                 resultsall--;
             });
 
             res.render('./board/list.html', {
                 boardList:result,
                 pagination:page_array,
+                userinfo:getuserinfo,
+                userinfo:getuserinfo,
                 userid:req.session.uid,
                 userimage:userimage
             });
-            
         }).catch((error) => {
             console.log(error);
         })
@@ -60,6 +67,7 @@ let write = async (req, res) => {
         userid:req.session.uid,
         userimage:userimage
     });
+    console.log(req.session);
 };
 
 let write_success = async (req, res) => {
