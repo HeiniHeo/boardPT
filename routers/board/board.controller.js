@@ -28,21 +28,19 @@ let board = async (req, res) => {
                 page_array.push(i);
             };
             result.forEach(ele => {
-                ele.num = total_record;
-                total_record--;
+                ele.num = resultsall;
+                resultsall--;
             });
 
             res.render('./board/list.html', {
                 boardList:result,
                 pagination:page_array,
             });
-            console.log(result.length, total_page);
+            
         }).catch((error) => {
             console.log(error);
         })
-        res.render('./board/list.html', {
-            boardList:result,
-        });
+
 };
 
 let write = (req, res) => {
@@ -59,6 +57,7 @@ let write_success = async (req, res) => {
     let results = await Board.create({ title, content })
 
     res.redirect('/board')
+    // res.redirect(`/board/view?id=${req.body.id}`)
 }
 
 let view = async (req, res) => {

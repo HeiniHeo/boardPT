@@ -24,7 +24,7 @@ let login_check = (req,res)=>{
         req.session.isLogin = true;
 
         req.session.save(()=>{
-            res.redirect('/');
+            res.redirect('/board');
         })
     }
 }
@@ -48,7 +48,6 @@ let join_success = async(req,res)=>{
         userid:userid,
         username:username,
     });
-    //res.redirect('./board/list',{userid,username,userimage});
 }
 
 module.exports = {
