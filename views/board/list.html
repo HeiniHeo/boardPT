@@ -8,6 +8,7 @@
     <title>LIST</title>
     <link rel="stylesheet" href="/index.css">
     <link rel="stylesheet" href="/board/list.css">
+    <link rel="stylesheet" href="/userinfo.css">
 </head>
 
 <body>
@@ -15,7 +16,7 @@
     <div id="wrap" class="w100">
         <!--HEADER contains title & userinfo-->
 
-        {% for item in userinfo %}
+
 
         <div class="header center">
             <div class="head_title">
@@ -27,13 +28,11 @@
                         <input type="button" class="btn" value="logout">
                         </a>
                     </li>
-                    <li class="user_image user_info_pop"><a><img src="https://img1.daumcdn.net/thumb/C428x428/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Ftistory_admin%2Fstatic%2Fmanage%2Fimages%2Fr3%2Fdefault_L.png"></a></li>
-                    <li class="user_name user_info_pop"><a>{{item.userid}}</a></li>
+                    <li class="user_image user_info_pop" ><img src="https://img1.daumcdn.net/thumb/C428x428/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Ftistory_admin%2Fstatic%2Fmanage%2Fimages%2Fr3%2Fdefault_L.png"></li>
+                    <li class="user_name user_info_pop">{{item.userid}}</li>
                 </ul>
             </div>
         </div>
-
-        {% endfor %}
 
         <!--MAIN board-->
         <div id="main" class="center">
@@ -47,24 +46,40 @@
                         <td>Hit</td>
                     </tr>
                     {% for item in boardList %}
-
                     <tr>
-                        <td>{{item.idx}}</td>
-                        <td>{{item.title}}</td>
+                        <td>{{item.num}}</td>
+                        <td><a href="/board/view?id={{item.id}}">{{item.title}}</a></td>
                         <td>{{item.writer}}</td>
                         <td>{{item.date}}</td>
                         <td>{{item.hit}}</td>
                     </tr>
+
+                    <div style="display:none">{{item.id}}</div>
                     {% endfor %}
                     
                 </table>
             </div>
         </div>
 
+        <div>dddd</div>
+
         <div id="footer" class="center">
+            <div id="pagenation">
+                <a>1</a>
+                <a>2</a>
+                <a>3</a>
+                <a>4</a>
+                <a>5</a>
+                <a>6</a>
+                <a>7</a>
+                <a>8</a>
+                <a>9</a>
+                <a>10</a>
+            </div>
             <a href="/board/write"><input type="button" class="btn" value="WRITE"></a>
         </div>
 
     </div>
 
+{% include '../user/user_info.html' %}
 {% include '../template/bottom.html' %}

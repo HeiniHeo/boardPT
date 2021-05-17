@@ -5,11 +5,6 @@ const moment = require('moment');
 module.exports = class Board extends Sequelize.Model{
     static init(sequelize){
         return super.init({ 
-            idx:{
-                type:Sequelize.INTEGER(11),
-                allowfull:false,
-                unique:true,
-            },
             title:{
                 type:Sequelize.STRING(100),
                 allowfull:false,
@@ -33,6 +28,7 @@ module.exports = class Board extends Sequelize.Model{
             hit:{
                 type:Sequelize.INTEGER(11),
                 allowfull:false,
+                defaultValue: 1,
             }
         },{
             sequelize,

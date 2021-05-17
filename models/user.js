@@ -25,7 +25,7 @@ module.exports = class User extends Sequelize.Model{
                 allowNull:true,
             },
             userdt:{
-                type:Sequelize.DATE,
+                type:Sequelize.DATEONLY,
                 allowNull:false,
                 defaultValue:Sequelize.NOW,
                 get: function(){
