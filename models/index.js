@@ -3,6 +3,7 @@
 const Sequelize = require('sequelize');
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
+const Board = require('./board');
 const User = require('./user');
 const db = {};
 
@@ -16,6 +17,10 @@ if (config.use_env_variable) {
 db.User = User;
 User.init(sequelize);
 */
+
+db.Board = Board;
+Board.init(sequelize);
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
