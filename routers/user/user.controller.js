@@ -37,8 +37,6 @@ let board = (req,res)=>{
     res.render('./board/list.html');
 };
 
-
-
 let join_success = async(req,res)=>{
     let userid = req.body.userid;
     let userpw = req.body.userpw;
@@ -58,9 +56,7 @@ let join_success = async(req,res)=>{
     //res.redirect('./board/list',{userid,username,userimage});
 }
 
-
 module.exports = {
-
     join:join,
     login:login,
     join_success:join_success,

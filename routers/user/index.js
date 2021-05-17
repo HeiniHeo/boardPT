@@ -15,6 +15,7 @@ const upload=multer({
         filename:function(req,file,callback){
             callback(null,new Date().valueOf()+path.extname(file.originalname))
         }
+        
     }),
 });
  */ 

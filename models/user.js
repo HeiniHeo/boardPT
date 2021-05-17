@@ -1,7 +1,6 @@
 const Sequelize = require('sequelize');
 const moment = require('moment');
 
-
 module.exports = class User extends Sequelize.Model{
     static init(sequelize){
         return super.init({ // super는 부모의 메서드를 실행하려고 사용함
