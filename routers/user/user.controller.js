@@ -1,10 +1,6 @@
 const { User } = require('../../models/index');
 const sequelize = require('sequelize');
 
-let join = (req,res)=>{
-    res.render('./user/join_success.html');
-}
-
 let login = (req,res)=>{
     let flag = req.query.flag;
     res.render('/index.html',{ flag });
@@ -57,7 +53,6 @@ let join_success = async(req,res)=>{
 }
 
 module.exports = {
-    join:join,
     login:login,
     join_success:join_success,
     board:board,

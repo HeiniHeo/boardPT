@@ -23,8 +23,12 @@
                         <input type="button" class="btn" value="logout">
                         </a>
                     </li>
-                    <li class="user_image user_info_pop"><img src="https://img1.daumcdn.net/thumb/C428x428/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Ftistory_admin%2Fstatic%2Fmanage%2Fimages%2Fr3%2Fdefault_L.png"></li>
-                    <li class="user_name user_info_pop">{{item.userid}}</li>
+                    {% if userimage == '' %}
+                    <li class="user_image user_info_pop"><img src="/user/svgexport-1 (1).svg"></li>
+                    {% else %}
+                    <li class="user_image user_info_pop"><img src="/{{userimage}}"></li>
+                    {% endif %}
+                    <li class="user_name user_info_pop">{{userid}}</li>
                 </ul>
             </div>
         </div>

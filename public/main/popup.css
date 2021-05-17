@@ -98,6 +98,12 @@
   border: 1px solid black;
 }
 
+.join_img{
+  width: 206px;
+  height: 30px;
+  margin-left: 10px;
+}
+
 .joinNow{
   width:400px; 
   height:50px; 
