@@ -1,7 +1,11 @@
 
         <div id = "user_center"  class="user_closed">
             <div class = "user_left">
-                <img class = "user_img" src = "/user/svgexport-1 (1).svg">
+                {% if userimage == '' %}
+                    <img src="/user/svgexport-1 (1).svg">
+                {% else %}
+                    <img src="/{{userimage}}">
+                {% endif %}
             </div>
             <p class = "user_divider"></p>
             <div class = "user_right">
