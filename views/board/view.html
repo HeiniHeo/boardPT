@@ -16,6 +16,8 @@
 
         <!--HEADER-->
         {% for item in boardList %}
+         <!--list in userinfo 해야함-->
+         
         <div class="header center">
             <div class="head_title">
                 <h1>{{item.title}}</h1>
@@ -33,10 +35,6 @@
                 </ul>
             </div>
         </div>
-
-
-
-
 
         <!--TEXT INPUT-->
 
@@ -56,7 +54,7 @@
         </div>
 
         <!--FOOTER-->
-        <div id="footer" class="center">
+        <div class="footer center">
             <a href="/board/modify?id={{item.id}}"><input type="button" class="btn" value="MODIFY"></a>
             <a href="/board"><input type="button" class="btn" value="BACK"></a>
             <a id="deleteBtn"><input type="button" class="btn" value="DELETE"></a>

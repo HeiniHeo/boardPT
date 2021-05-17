@@ -53,6 +53,10 @@ button{
     float: left;
 }
 
+.head_title > h1{
+    line-height: 100px;
+}
+
 /* user_info small */
 .small_info{
     position: absolute;
@@ -136,4 +140,8 @@ button{
 .write_box > input{
     height: 100%;
     width: 100%;
+}
+
+.footer{
+    margin-top: 30px;
 }

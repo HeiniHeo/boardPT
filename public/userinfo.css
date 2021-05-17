@@ -24,6 +24,7 @@ body{
     position:relative;
     background: white;
     box-shadow: 5px 5px 3px gray;
+    border: 2px solid #ececec;
 }
 
 .user_left{
@@ -94,12 +95,12 @@ body{
 }
 
 .user_closed{
-    bottom:-800px;
+    transform: translateY(100%);
     transition: all 1s ease-in-out;
 }
 
 .user_open{
-    bottom:900px;
+    transform: translateY(-130%);
     transition: all 1s ease-in-out;
 }
 /*close -50 open 0 */
