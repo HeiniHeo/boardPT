@@ -156,16 +156,14 @@
         if( login_flag ){ //true이면(중복이 아니면)
             userid_msg.innerHTML = "You can use this ID."
             userid_msg.style.color = 'blue';
+            userid_msg.style.display = 'block';
         }else{ // false이면(중복이면)
-            userid_msg.innerHTML = 'This ID already exeist.'
+            userid_msg.innerHTML = 'This ID already exist.'
             userid_msg.style.color = 'red';
+            userid_msg.style.display = 'block';
         } 
     }
-    userid.addEventListener('focusout',userid_check); 
-    
-    
-    
-    
+    userid.addEventListener('focusout',userid_check);
     
 //============================비밀번호 확인부분==================================
     function password_check(){
