@@ -29,8 +29,8 @@
   </div>
 
 
-  <form action="/user/join_success" method="post" id="login_form" enctype="multipart/form-data">
-    <div class="join_popup_wrap"></div>
+<form action="/user/join_success" method="post" id="login_form" enctype="multipart/form-data">
+  <div class="join_popup_wrap"></div>
     <div class="join_popup">
       <ul class="join_pop_inner">
         <li>ID <input type="text" id="userid" class="join_box" name="userid"></li>
@@ -125,8 +125,61 @@
     pw.addEventListener('focus', () => {
       pw.setAttribute('style', 'background:#fff;')
     })
-  </script>
-  {% endif %}
+</script>
+{% endif %}
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<!--위에 이거 axois 가져온거래요-->
+<script type="text/javascript">
+
+        const pwd1 = document.querySelector('#userpw');
+        const pwd2 = document.querySelector('#userpw_check');
+        const btn = document.querySelector('#login_submit');
+        const login_frm = document.querySelector('#login_form');
+        const userid_msg = document.querySelector('#userid_msg');
+        const userid = document.querySelector('#userid');
+
+        
+    async function userid_check(){//아이디 체크하는 부분 함수로 만들어줘
+    let data = await axios.get(`http://localhost:3000/user/userid_check?userid=${userid.value}`);
+                        //얘는 반환값이 프로미스객체  // 뒤에 userid 이거는 쿼리스트링이라고 함. $ 어쩌구 여기는 userid의 벨류값
+                        //.get으로 하는거는 요청을 보낸다는 뜻 (uri값을 만들었으니까)
+                        //그 결과치는 json형태로 떨궈주는걸로 만들어준다고 함    
+    //AJAX가져왔다고 가정하고 짜보면- 중복 :FALSE 중복X : TRUE
+        console.log(data);
+
+        login_flag = data.data.login;// 이건 기준치 (중복 되지 않았다고 기본값주고 작업 시작)
+
+        if( login_flag ){ //true이면(중복이 아니면)
+            userid_msg.innerHTML = "사용 가능한 아이디 입니다."
+            userid_msg.style.color = 'blue';
+        }else{ // false이면(중복이면)
+            userid_msg.innerHTML = '중복된 아이디 입니다.'
+            userid_msg.style.color = 'red';
+        } 
+    }
+
+    userid.addEventListener('focusout',userid_check); //여기도 이벤트 주는부분
+
+    function password_check(){
+                console.log( pwd1.value, pwd2.value );
+                return pwd1.value == pwd2.value;
+        }
+
+
+    btn.addEventListener('click',()=>{ //이벤트 주는 부분 
+        pwd_check = password_check(); //boolean
+        
+        if(pwd_check){// password_check를 실행한 결과값이 트루면
+          login_frm.submit();  
+        }else{
+            pwd1.value='';
+            pwd2.value='';
+            pwd1.focus(); // 비번1 지우고 비번2 지우고 비번 1로 커서이동
+            alert('패스워드가 일치하지 않습니다.')
+        }
+    })  //login_frm.submit() // 요거를 조건이 맞을때에만 실행되게
+</script>
 </body>
 
 </html>
