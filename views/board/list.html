@@ -15,16 +15,13 @@
     
     <div id="wrap" class="w100">
         <!--HEADER contains title & userinfo-->
-
-        <!--list in userinfo 해야함-->
-
         <div class="header center">
             <div class="head_title">
                 <h1>BOARD</h1>
             </div>
             <div class="small_info">
                 <ul>
-                    <li class="logout"><a href="/logout">
+                    <li class="logout"><a href="/">
                         <input type="button" class="btn" value="logout">
                         </a>
                     </li>
@@ -33,8 +30,6 @@
                 </ul>
             </div>
         </div>
-
-   
 
         <!--MAIN board-->
         <div id="main" class="center">
@@ -48,6 +43,7 @@
                         <td>Hit</td>
                     </tr>
                     {% for item in boardList %}
+
                     <tr>
                         <td>{{item.num}}</td>
                         <td><a href="/board/view?id={{item.id}}">{{item.title}}</a></td>

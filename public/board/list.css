@@ -18,12 +18,14 @@ tr:nth-child(1){
     background-color: #000;
     color: #fff;
     text-align: center;
+    border-bottom:none;
 }
 
 tr:nth-child(1) > td:nth-child(1){width: 100px;}
 tr:nth-child(1) > td:nth-child(2){width: 600px;}
 tr:nth-child(1) > td:nth-child(4){width: 200px;}
 tr:nth-child(1) > td:nth-child(5){width: 50px;}
+tr:nth-child(10) > td{border-bottom: none;}
 
 td{
     padding: 10px;

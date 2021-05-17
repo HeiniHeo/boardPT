@@ -1,7 +1,6 @@
 const Sequelize = require('sequelize');
 const moment = require('moment');
 
-
 module.exports = class User extends Sequelize.Model{
     static init(sequelize){
         return super.init({ 
@@ -14,11 +13,14 @@ module.exports = class User extends Sequelize.Model{
                 type:Sequelize.STRING(40),
                 allowNull : false,
             },
+            usermail:{
+                type:Sequelize.STRING(40),
+                allowNull : false,
+            },
             username:{
                 type:Sequelize.STRING(10),
                 allowNull:false,
             },
-                        
             userimage:{
                 type:Sequelize.STRING(100),
                 allowNull:true,

@@ -6,6 +6,13 @@ let board = async (req, res) => {
     let page = (req.query.id == undefined) ? 1 : req.query.id;
     let offset = ( req.query.id == undefined) ? 0 : 9 * (page - 1);
     let page_array = [];
+    let userid = req.session.uid;
+
+    let getuserinfo = await User.findAll({
+        where: {
+            userid: userid
+        }
+    })
 
     let resultsall = await Board.findAll({})
     .then((resultall) => {
@@ -27,21 +34,26 @@ let board = async (req, res) => {
                 page_array.push(i);
             };
             result.forEach(ele => {
-                ele.num = total_record;
-                total_record--;
+                ele.num = resultsall;
+                resultsall--;
             });
 
             res.render('./board/list.html', {
                 boardList:result,
                 pagination:page_array,
+                userinfo:getuserinfo,
             });
         }).catch((error) => {
             console.log(error);
         })
+
 };
 
 let write = (req, res) => {
-    res.render('./board/write.html');
+    res.render('./board/write.html',{
+        
+    });
+    console.log(req.session);
 };
 
 let write_success = async (req, res) => {
@@ -52,6 +64,7 @@ let write_success = async (req, res) => {
     let results = await Board.create({ title, content })
 
     res.redirect('/board')
+    // res.redirect(`/board/view?id=${req.body.id}`)
 }
 
 let view = async (req, res) => {
@@ -85,13 +98,6 @@ let modify = async (req, res) => {
 
 };
 
-
-module.exports = {
-    board:board,
-    write:write,
-    view:view,
-    modify:modify,
-}
 let modify_success = async (req, res) => {
     let title = req.body.title;
     let content = req.body.content;
