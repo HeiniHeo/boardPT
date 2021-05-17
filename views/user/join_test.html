@@ -34,6 +34,7 @@
         const userid_msg = document.querySelector('#userid_msg');
         const userid = document.querySelector('#userid');
     
+        
         function userid_check(){
             let data = axios.get(`http://localhost:3000/user/userid_check?userid=${userid.value}`)
             console.log(data);
