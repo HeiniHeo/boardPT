@@ -15,10 +15,11 @@ const upload=multer({
         filename:function(req,file,callback){
             callback(null,new Date().valueOf()+path.extname(file.originalname))
         }
+        
     }),
 });
  */ 
+router.post('/login_check',controller.login_check)
 router.post('/join_success',controller.join_success)
-router.post('/login_fail',controller.login_check)
 
 module.exports = router;
