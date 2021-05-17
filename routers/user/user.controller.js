@@ -20,7 +20,7 @@ let login_check = async(req,res)=>{
     }else{
         req.session.uid = userid;
         req.session.isLogin = true;
-        console.log(req.session);
+
         req.session.save(()=>{
             res.redirect('/board');
         })
@@ -34,12 +34,11 @@ let join_success = async(req,res)=>{
     let userpw = req.body.userpw;
     let userpw_check = req.body.userpw_check;
     let username = req.body.username;
-    let usermail = req.body.usermail
-    let userimage = req.file == undefined ? '' : req.file.filename;
+    let userimage2 = req.file == undefined ? '' : req.file.path;
+    let userimage = userimage2.replace('public\\','')
 
-    try{// 요기 rst 부분은 그냥 써놔도 상관없고 나중에
-        // 사용할때가 있으면 쓰는거라고 하심(왜 rst인가 했더니 result약자인듯..?)
-        let rst = await User.create({userid,userpw,username,usermail,userimage})
+    try{
+        let rst = await User.create({userid,userpw,username,userimage})
     } catch(e){
         console.log(e);
     }
