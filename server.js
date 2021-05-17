@@ -8,9 +8,6 @@ const session = require('express-session');
 const PORT = '3000';
 
 
-
-
-
 const {sequelize} = require('./models');
 const {User}=require('./models');
 const router = require('./routers/index');
