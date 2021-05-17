@@ -8,18 +8,6 @@
     let user_close_img = document.querySelector('.user_close_img');
     let user_image = document.querySelector('.user_image');
     let user_name = document.querySelector('.user_name');
-    /*
-    function closePopup(){
-        if(state){
-            user_center.setAttribute('class', 'user_closed');
-            user_close_img.setAttribute('class','user_close_img closed')
-        } else{
-            user_center.setAttribute('class', 'user_open');
-            user_close_img.setAttribute('class', 'user_close_img open')
-        }
-        state=!state;
-        console.log(state)
-    }    */
 
     function openPopup() {
         if (state2) {
@@ -39,10 +27,31 @@
     user_image.addEventListener('click', openPopup);
     user_name.addEventListener('click', openPopup);
 
+    // button.addEventListener('click', function () {
+    //     content.setAttribute('class', 'closed2');
+    // })
 
-    button.addEventListener('click', function () {
-        content.setAttribute('class', 'closed2');
-    })
+    //글쓰기/편집 빈칸경고
+    let texttitle = document.getElementsByClassName('texttitle');
+    let textcontent = document.getElementsByClassName('textcontent');
+    let textbtn = document.getElementsByClassName('textbtn');
+    for(i=0;i>texttitle.length;i++){
+        console.log(texttitle[i]);
+        console.log(texttitle.length);
+    }
+
+    function text_empty_check(){
+        if(texttitle.value == ""){
+            alert('제목을 입력해주십시오');
+            event.preventDefault();
+        } else if(textcontent.value == ""){
+            alert('내용을 입력해주십시오');
+            event.preventDefault();
+        }
+    }
+
+    // textbtn.addEventListener('click',text_empty_check);
+
 
 </script>
 

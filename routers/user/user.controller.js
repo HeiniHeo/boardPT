@@ -14,14 +14,14 @@ let login_check = (req,res)=>{
     let userpw = req.body.userpw;
 
     let result = User.findOne({
-        where:{uerid,userpw}
+        where:{userid,userpw}
     })
     if(result == null){
         res.redirect('user/login_fail')
     }else{
         req.session.uid = userid;
         req.session.isLogin = true;
-
+        console.log(req.session);
         req.session.save(()=>{
             res.redirect('/');
         })

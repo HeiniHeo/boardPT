@@ -4,7 +4,7 @@ const moment = require('moment');
 
 module.exports = class User extends Sequelize.Model{
     static init(sequelize){
-        return super.init({ // super는 부모의 메서드를 실행하려고 사용함
+        return super.init({ 
             userid:{
                 type:Sequelize.STRING(20),
                 allowNull:false,
@@ -18,8 +18,7 @@ module.exports = class User extends Sequelize.Model{
                 type:Sequelize.STRING(10),
                 allowNull:false,
             },
-            
-            
+                        
             userimage:{
                 type:Sequelize.STRING(100),
                 allowNull:true,

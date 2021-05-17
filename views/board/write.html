@@ -38,19 +38,33 @@
 
             <div id="main" class="center">
                 <div class="write_title write_box w100">
-                    <input type="text" name="title">
+                    <input type="text" name="title" class="texttitle">
                 </div>
                 <div class="write_body write_box w100">
-                    <textarea name="content"></textarea>
+                    <textarea name="content" class="textcontent"></textarea>
                 </div>
             </div>
 
             <!--FOOTER-->
             <div id="footer" class="center">
-                <input type="submit" class="btn" value="WRITE">
+                <input type="submit" class="btn textbtn" value="WRITE" onclick="text_empty_check()">
                 <a href="/board"><input type="button" class="btn" value="BACK"></a>
             </div>
-
+            <script type="text/javascript">
+                let texttitle = document.getElementsByClassName('texttitle');
+    let textcontent = document.getElementsByClassName('textcontent');
+    let textbtn = document.getElementsByClassName('textbtn');
+    console.log(texttitle,textcontent);
+    function text_empty_check(){
+        if(texttitle.value == ""){
+            alert('제목을 입력해주십시오');
+            event.preventDefault();
+        } else if(textcontent.value == ""){
+            alert('내용을 입력해주십시오');
+            event.preventDefault();
+        }
+    }
+            </script>
         </form>
     </div>
 {% include '../user/user_info.html' %}

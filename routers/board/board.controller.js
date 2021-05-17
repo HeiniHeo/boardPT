@@ -15,11 +15,10 @@ let board = async (req, res) => {
         console.log(error);
     });
 
-
     let results = await Board.findAll({
         limit:9,
+        order:[['id','DESC']],
         offset:offset,
-        order:[['id','DESC']]
     })
         .then((result) => {
             let total_record = result.length;
@@ -36,7 +35,6 @@ let board = async (req, res) => {
                 boardList:result,
                 pagination:page_array,
             });
-            console.log(result.length, total_page);
         }).catch((error) => {
             console.log(error);
         })
