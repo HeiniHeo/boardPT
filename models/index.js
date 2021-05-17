@@ -5,7 +5,10 @@ const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const Board = require('./board');
 const User = require('./user');
+<<<<<<< HEAD
 
+=======
+>>>>>>> 52363a55fadad36038fe4492714bb21832838626
 const db = {};
 
 let sequelize;

@@ -53,7 +53,6 @@ let join_success = async(req,res)=>{
         userid:userid,
         username:username,
     });
-    //res.redirect('./board/list',{userid,username,userimage});
 }
 
 module.exports = {
