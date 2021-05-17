@@ -38,12 +38,11 @@ td:nth-child(5){
 
 /* FOOTER */
 
-#footer{
+.footer{
     height: 200px;
-    margin-top: 40px;
 }
 
-#footer > a{
+.footer > a{
     float: right;
 }
 
