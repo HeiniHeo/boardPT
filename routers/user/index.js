@@ -20,5 +20,7 @@ const upload=multer({
 
 router.post('/login_check',controller.login_check)
 router.post('/join_success',upload.single('userimage'),controller.join_success)
+router.get('/userid_check',controller.userid_check);
+
 
 module.exports = router;
