@@ -69,6 +69,26 @@
     close_login.addEventListener('click',closeLogin);
 
 
+    function popupSet_join(){
+      let join_popup_wrap = document.querySelector('.join_popup_wrap');
+      let type2 = (join_popup_wrap.style.display == 'block') ? 'none' : 'block';
+      join_popup_wrap.style.display = type2;
+
+      let joinPopup = document.querySelector('.join_popup');
+      let type1 = (joinPopup.style.display == 'block') ? 'none' : 'block';
+      joinPopup.style.display = type1;
+    }
+
+
+    function popupSet_login(){
+      let loginPopup = document.querySelector('.login_popup_wrap');
+      let type2 = (loginPopup.style.display == 'block') ? 'none' : 'block';
+      loginPopup.style.display = type2;
+
+      let login_popup = document.querySelector('.login_popup');
+      let type1 = (login_popup.style.display == 'block') ? 'none' : 'block';
+      login_popup.style.display = type1;
+    }
 
     function closeJoin(){
       /*
@@ -101,26 +121,6 @@
       login_popup.style.display = type;
     }
 
-    function popupSet_join(){
-      let join_popup_wrap = document.querySelector('.join_popup_wrap');
-      let type2 = (join_popup_wrap.style.display == 'none') ? 'block' : 'none';
-      join_popup_wrap.style.display = type2;
-
-      let joinPopup = document.querySelector('.join_popup');
-      let type1 = (joinPopup.style.display == 'none') ? 'block' : 'none';
-      joinPopup.style.display = type1;
-    }
-
-
-    function popupSet_login(){
-      let loginPopup = document.querySelector('.login_popup_wrap');
-      let type2 = (loginPopup.style.display == 'none') ? 'block' : 'none';
-      loginPopup.style.display = type2;
-
-      let login_popup = document.querySelector('.login_popup');
-      let type1 = (login_popup.style.display == 'none') ? 'block' : 'none';
-      login_popup.style.display = type1;
-    }
   </script>
 
 {% if flag == '0' %}

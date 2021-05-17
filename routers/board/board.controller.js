@@ -34,7 +34,7 @@ let board = async (req, res) => {
                 page_array.push(i);
             };
             result.forEach(ele => {
-                ele.num = resultsall;
+                ele.num = resultsall - offset;
                 resultsall--;
             });
 
