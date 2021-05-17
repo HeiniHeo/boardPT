@@ -1,4 +1,5 @@
-const {User} = require('../../models/index');
+const { User } = require('../../models/index');
+const sequelize = require('sequelize');
 
 let join = (req,res)=>{
     res.render('./user/join_success.html');
@@ -28,14 +29,9 @@ let login_check = (req,res)=>{
     }
 }
 
-
-
-
 let board = (req,res)=>{
     res.render('./board/list.html');
 };
-
-
 
 let join_success = async(req,res)=>{
     let userid = req.body.userid;
@@ -50,15 +46,12 @@ let join_success = async(req,res)=>{
     }
     res.render('./user/join_success.html',{
         userid:userid,
-        
         username:username,
     });
     //res.redirect('./board/list',{userid,username,userimage});
 }
 
-
 module.exports = {
-
     join:join,
     login:login,
     join_success:join_success,

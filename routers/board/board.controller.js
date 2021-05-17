@@ -4,22 +4,24 @@ const Sequelize = require('sequelize');
 
 let board = async (req, res) => {
     let results = await Board.findAll({})
-        .then((result) => {
-            let total_record = result.length;
-            result.forEach(ele => {
-                ele.num = total_record;
-                total_record--;
-            })
-            res.render('./board/list.html', {
-                boardList:result,
-            });
-        }).catch((error) => {
-            console.log(error);
+    .then((result) => {
+        let total_record = result.length;
+        result.forEach(ele => {
+            ele.num = total_record;
+            total_record--;
         })
+        res.render('./board/list.html', {
+            boardList:result,
+        });
+    }).catch((error) => {
+        console.log(error);
+    })
 };
 
 let write = (req, res) => {
-    res.render('./board/write.html');
+    res.render('./board/write.html',{
+        
+    });
 };
 
 let write_success = async (req, res) => {
@@ -63,13 +65,13 @@ let modify = async (req, res) => {
 
 };
 
-
 module.exports = {
     board:board,
     write:write,
     view:view,
     modify:modify,
 }
+
 let modify_success = async (req, res) => {
     let title = req.body.title;
     let content = req.body.content;

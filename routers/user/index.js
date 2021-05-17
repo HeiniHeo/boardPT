@@ -21,6 +21,4 @@ const upload=multer({
 router.post('/join_success',controller.join_success)
 router.post('/login_fail',controller.login_check)
 
-
-
 module.exports = router;
