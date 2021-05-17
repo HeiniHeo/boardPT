@@ -34,11 +34,12 @@ let join_success = async(req,res)=>{
     let userpw = req.body.userpw;
     let userpw_check = req.body.userpw_check;
     let username = req.body.username;
+    let usermail = req.body.usermail;
     let userimage2 = req.file == undefined ? '' : req.file.path;
     let userimage = userimage2.replace('public\\','')
 
     try{
-        let rst = await User.create({userid,userpw,username,userimage})
+        let rst = await User.create({userid,userpw,usermail,username,userimage})
     } catch(e){
         console.log(e);
     }
