@@ -99,6 +99,7 @@ button{
     height: 60px;
     border-radius: 35px;
     border: 1px solid #ededed;
+    background-color: gray;
 }
 
 .user_name{
@@ -130,6 +131,7 @@ button{
 }
 
 .write_box > textarea{
+    overflow: hidden;
     height: 100%;
     width: 100%;
     font-size: 16px;

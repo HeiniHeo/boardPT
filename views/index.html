@@ -1,63 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
-<link rel="stylesheet" href="/main/popup.css">
-<link rel="stylesheet" href="/main/main.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/main/popup.css">
+  <link rel="stylesheet" href="/main/main.css">
 
 </head>
+
 <body>
+  <div id="wrap">
     <div id="main_Btn">
-  <button type="button" class="pop_btn btnBox login_btn" >LOG IN</a></button>
-  
-  <button type="button" class="pop_btn btnBox join_btn" >JOIN</a></button>
+      <button type="button" class="pop_btn btnBox login_btn">LOG IN</a></button>
+      <button type="button" class="pop_btn btnBox join_btn">JOIN</a></button>
     </div>
-  <div class="verticalLine"> </div>
+    <div class="verticalLine"> </div>
 
 
     <div id="copy_write">
-    <h1>Create your noticeboard, <br/>
-        <br/>
-        TRY NOW.</h1>
-</div>
+      <h1>Create your noticeboard, <br />
+        <br />
+        TRY NOW.
+      </h1>
+    </div>
+  </div>
 
 
 <form action="/user/join_success" method="post" id="join_form" enctype="multipart/form-data">
   <div class="join_popup_wrap"></div>
     <div class="join_popup">
       <ul class="join_pop_inner">
-          <li>ID   <input type="text" id="userid" class="join_box" name="userid"></li>
-          <li id="userid_msg"></li>
-          <li>PASSWORD   <input type="password" id="userpw" class="join_box" name="userpw"></li>
-          <li>PASSWORD CHECK   <input type="password" id="userpw_check" class="join_box" name="userpw_check"></li>
-          <li>E-MAIL   <input type="email" class="join_box" name="user_mail"></li>
-          <li>IMAGE  <input type="file" class="join_box" name="userimage"></li> 
-          <li>NAME  <input type="text" class="join_box" name="username"></li> 
+        <li>ID <input type="text" id="userid" class="join_box" name="userid"></li>
+        <li style="display: none;" id="userid_msg"></li>
+        <li>PASSWORD <input type="password" id="userpw" class="join_box" name="userpw"></li>
+        <li>PASSWORD CHECK <input type="password" id="userpw_check" class="join_box" name="userpw_check"></li>
+        <li>E-MAIL <input type="email" class="join_box" name="user_mail"></li>
+        <li>IMAGE <input type="file" class="join_img" name="userimage"></li>
+        <li>NAME <input type="text" class="join_box" name="username"></li>
       </ul>
       <input type="submit" class="joinNow" value="JOIN" id="join_submit">
       <span class="close close_join"> X </span>
-  </div>
-</form>
-
-
-  <form action="/user/login_check" method="post">
-    <div class="login_popup_wrap">  </div>
-      <div class="login_popup">
-        <ul class="login_pop_inner">
-          <li>ID</li><input type="text" name="userid" id="userid" class="login_box">
-          <li>PASSWORD</li><input type="password" name="userpw" id="userpw"  class="login_box">
-        </ul>
-        <span class="close close_login"> X </span>
-        <input type="submit" class="loginNow" value="LOGIN">
-      </div>
+    </div>
   </form>
 
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-    <script type="text/javascript">
+  <form action="/user/login_check" method="post">
+    <div class="login_popup_wrap"> </div>
+    <div class="login_popup">
+      <ul class="login_pop_inner">
+        <li>ID</li><input type="text" name="userid" id="userid" class="login_box">
+        <li>PASSWORD</li><input type="password" name="userpw" id="userpw" class="login_box">
+      </ul>
+      <span class="close close_login"> X </span>
+      <input type="submit" class="loginNow" value="LOGIN">
+    </div>
+  </form>
+
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+  <script type="text/javascript">
     let joinBtn = document.querySelector('.join_btn');
     let loginBtn = document.querySelector('.login_btn');
     let close_join = document.querySelector('.close_join');
@@ -90,12 +94,7 @@
     }
     
 
-    function closeJoin(){
-      /*
-      let closeJoin = document.querySelector('.close_join')
-      let closeType = (joinPopup.style.display == 'block') ? 'none' : 'block';
-      joinPopup.style.display = closeType
-      */
+    function closeJoin() {
       let join_popup_wrap = document.querySelector('.join_popup_wrap');
       let type1 = (join_popup_wrap.style.display == 'none') ? 'block' : 'none';
       join_popup_wrap.style.display = type1;
@@ -105,13 +104,7 @@
       joinPopup.style.display = type2;
     }
 
-
-    function closeLogin(){
-      /*
-      let closeJoin = document.querySelector('.close_join')
-      let closeType = (loginPopup.style.display == 'block') ? 'none' : 'block';
-      loginPopup.style.display = closeType
-      */
+    function closeLogin() {
       let login_popup_wrap = document.querySelector('.login_popup_wrap');
       let type2 = (login_popup_wrap.style.display == 'none') ? 'block' : 'none';
       login_popup_wrap.style.display = type2;
@@ -121,20 +114,19 @@
       login_popup.style.display = type;
     }
 
-
   </script>
 
-{% if flag == '0' %}
-<script type="text/javascript">
-  alert('아이디와 패스워드를 확인해주세요');
+  {% if flag == '0' %}
+  <script type="text/javascript">
+    alert('아이디와 패스워드를 확인해주세요');
     const id = document.querySelector('#userid');
     const pw = document.querySelector('#userpw');
 
-    id.addEventListener('focus',()=>{
-        id.setAttribute('style','background:#fff;')
+    id.addEventListener('focus', () => {
+      id.setAttribute('style', 'background:#fff;')
     })
-    pw.addEventListener('focus',()=>{
-        pw.setAttribute('style','background:#fff;')
+    pw.addEventListener('focus', () => {
+      pw.setAttribute('style', 'background:#fff;')
     })
 </script>
 {% endif %}

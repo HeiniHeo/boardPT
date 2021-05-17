@@ -8,7 +8,6 @@
     transform: translate(-50%);
   }
 
-    
   #main_Btn> .pop_btn {
     width:260px; 
     height:50px; 
@@ -34,8 +33,6 @@
       margin-top: 50px;
   }
 
-
-
   .verticalLine{ /*수직선*/
       width: 20px;
       height: 400px;
@@ -45,7 +42,6 @@
       top: 10%;
         
   }
-
 
   /*----------------------------------------------*/
     #copy_write{ /*카피라이트*/
@@ -57,7 +53,6 @@
     top: 22%;
     transform: translate(-50%);
   }
-
 
 /*----------------------------------------------*/
 .join_popup_wrap { /*팝업시 뒷배경 부분*/

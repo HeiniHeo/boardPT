@@ -3,6 +3,11 @@ const { Board } = require('../../models/index');
 const Sequelize = require('sequelize');
 
 let board = async (req, res) => {
+    let user_img = await User.findOne({
+        where:{userid:req.session.uid}
+    })
+    let userimage = user_img.dataValues.userimage;
+
     let page = (req.query.id == undefined) ? 1 : req.query.id;
     let offset = ( req.query.id == undefined) ? 0 : 9 * (page - 1);
     let page_array = [];
@@ -35,6 +40,8 @@ let board = async (req, res) => {
             res.render('./board/list.html', {
                 boardList:result,
                 pagination:page_array,
+                userid:req.session.uid,
+                userimage:userimage
             });
             
         }).catch((error) => {
@@ -43,24 +50,34 @@ let board = async (req, res) => {
 
 };
 
-let write = (req, res) => {
+let write = async (req, res) => {
+    let user_img = await User.findOne({
+        where:{userid:req.session.uid}
+    })
+    let userimage = user_img.dataValues.userimage;
+
     res.render('./board/write.html',{
-        
+        userid:req.session.uid,
+        userimage:userimage
     });
 };
 
 let write_success = async (req, res) => {
     let title = req.body.title;
     let content = req.body.content;
-    // let writer = req.body.userid;
+    let writer = req.session.uid;
 
-    let results = await Board.create({ title, content })
+    let results = await Board.create({ title, content , writer })
 
     res.redirect('/board')
     // res.redirect(`/board/view?id=${req.body.id}`)
 }
 
 let view = async (req, res) => {
+    let user_img = await User.findOne({
+        where:{userid:req.session.uid}
+    })
+    let userimage = user_img.dataValues.userimage;
 
     let boardList = await Board.findAll({
         where: { id: req.query.id }
@@ -76,17 +93,25 @@ let view = async (req, res) => {
 
     res.render('./board/view.html', {
         boardList: boardList,
+        userid:req.session.uid,
+        userimage:userimage
     });
 };
 
 let modify = async (req, res) => {
+    let user_img = await User.findOne({
+        where:{userid:req.session.uid}
+    })
+    let userimage = user_img.dataValues.userimage;
 
     let boardList = await Board.findAll({
         where: { id: req.query.id }
     })
     res.render('./board/modify.html', {
         boardList: boardList,
-        boardid: req.query.id
+        boardid: req.query.id,
+        userid:req.session.uid,
+        userimage:userimage
     });
 
 };
@@ -96,7 +121,6 @@ let modify_success = async (req, res) => {
     let content = req.body.content;
     let id = req.body.boardid;
     console.log(title, content, id)
-
 
     let boardList = await Board.update({
         title,
