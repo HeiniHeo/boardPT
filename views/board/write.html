@@ -11,7 +11,9 @@
 </head>
 <body>
     <div id="wrap" class="w100">
-        {% for item in boardList %}
+
+         <!--list in userinfo 해야함-->
+
         <!--HEADER-->
         <div class="header center">
             <div class="head_title">
@@ -28,7 +30,7 @@
                 </ul>
             </div>
         </div>
-        {% endfor %}
+
 
         <form action="/board/write_success" method="post">
 
@@ -46,7 +48,7 @@
             <!--FOOTER-->
             <div id="footer" class="center">
                 <input type="submit" class="btn" value="WRITE">
-                <a href="/board/list"><input type="button" class="btn" value="BACK"></a>
+                <a href="/board"><input type="button" class="btn" value="BACK"></a>
             </div>
 
         </form>

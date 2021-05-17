@@ -87,6 +87,13 @@ let modify = async (req, res) => {
 
 };
 
+
+module.exports = {
+    board:board,
+    write:write,
+    view:view,
+    modify:modify,
+}
 let modify_success = async (req, res) => {
     let title = req.body.title;
     let content = req.body.content;

@@ -11,5 +11,7 @@ router.post('/modify_success',controller.modify_success);
 router.get('/delete',controller.postdel);
 
 router.get('/', controller.board);
+router.post('/list',controller.board);
+
 
 module.exports = router;

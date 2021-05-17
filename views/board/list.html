@@ -16,11 +16,11 @@
     <div id="wrap" class="w100">
         <!--HEADER contains title & userinfo-->
 
-
+        <!--list in userinfo 해야함-->
 
         <div class="header center">
             <div class="head_title">
-                <h1>철원의 오대쌀</h1>
+                <h1>BOARD</h1>
             </div>
             <div class="small_info">
                 <ul>
@@ -33,6 +33,8 @@
                 </ul>
             </div>
         </div>
+
+   
 
         <!--MAIN board-->
         <div id="main" class="center">
@@ -61,9 +63,7 @@
             </div>
         </div>
 
-        <div>dddd</div>
-
-        <div id="footer" class="center">
+        <div class="footer center">
             <div id="pagenation">
                 {% for pg in pagination %}
                 <a href="/board/?id={{pg}}">{{pg}}</a>

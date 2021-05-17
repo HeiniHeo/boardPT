@@ -1,0 +1,81 @@
+/*메인 페이지 & 팝업 버튼 부분*/
+#main_Btn{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 25%;
+    top: 25%;
+    transform: translate(-50%);
+  }
+
+    
+  #main_Btn> .pop_btn {
+    width:260px; 
+    height:50px; 
+    border:0;
+    cursor:pointer;  
+    text-align:center;
+    background:#000; 
+    color:#fff; 
+    font-size:16px;
+    border-radius: 3px;
+    opacity:1;
+    transition:all 0.3s;
+    
+  }
+  
+  #main_Btn> .pop_btn:hover {
+    background:#fff; 
+    color:#000;
+    border: 1px solid black;    
+  }
+
+  .join_btn{
+      margin-top: 50px;
+  }
+
+
+
+  .verticalLine{ /*수직선*/
+      width: 20px;
+      height: 400px;
+      border-left: thin solid black;
+      position: absolute;
+      left: 50%;
+      top: 10%;
+        
+  }
+
+
+  /*----------------------------------------------*/
+    #copy_write{ /*카피라이트*/
+    width: 300px;
+    height: 300px;
+    color: black;
+    position: absolute;
+    left: 75%;
+    top: 22%;
+    transform: translate(-50%);
+  }
+
+
+/*----------------------------------------------*/
+.join_popup_wrap { /*팝업시 뒷배경 부분*/
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: .6;
+    position: fixed;
+    top: 0;
+    display: none;    
+}
+
+.login_popup_wrap{ 
+  width: 100%;
+    height: 100%;
+    background: black;
+    opacity: .6;
+    position: fixed;
+    top: 0;
+    display: none;
+}

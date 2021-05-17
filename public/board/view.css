@@ -1,3 +1,14 @@
+*{
+    overflow-y: auto;
+}
+
+.user_image{
+    width: 62px;
+    height: 62px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
 #main{
     margin-top:30px;
 }
@@ -31,9 +42,5 @@
     box-sizing: border-box;
 }
 
-#footer{
-    margin-top: 30px;
-}
-
-#footer > a:nth-child(1){float:right; margin-left:30px}
-#footer > a:nth-child(2){float:right;}
+.footer > a:nth-child(1){float:right; margin-left:30px}
+.footer > a:nth-child(3){float:right;}

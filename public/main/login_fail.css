@@ -1,0 +1,146 @@
+.login_popup{ /*login 팝업창*/
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: #fff;
+    left: 12.5%;
+    top: 12.5%;
+    border-radius: 5px;
+    display: block;
+    padding: 10px;
+  }
+  
+  .login_pop_inner {
+    display: block;
+    position: relative;
+    left: 48%;
+    top: 15%;
+    transform: translate(-25%);
+  }
+  
+  .login_pop_inner > li{
+    width: 160px;
+    text-align: center;
+    display: inline-block;
+    margin: 20px 18px;
+    font-size: 20px;
+  }
+  
+  .login_pop_inner > .login_box{
+    width: 200px;
+    height: 30px;
+    display: block;
+    border: 1px solid black;
+  }
+  
+  .loginNow{
+    width:400px; 
+    height:50px; 
+    border:0;
+    cursor:pointer;  
+    text-align:center;
+    background:#000; 
+    color:#fff; 
+    font-size:16px;
+    border-radius: 3px;
+    transition:all 0.1s;
+    position: relative;
+    left: 8%;
+    top: 30%;
+    transform: translate(-50%);
+    transform: scale(1);
+    
+  }
+  
+  .loginNow:hover {
+    
+    transform: scale(1.02);   
+    }
+  
+  /*----------------------------------------*/
+  .join_popup{ /*join 팝업창*/
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: #fff;
+    left: 12.5%;
+    top: 12.5%;
+    border-radius: 5px;
+    opacity: 1;
+    display: none;
+    padding: 10px;
+  }
+  
+  .join_pop_inner{
+  
+    position: relative;
+    left: 26%;
+    top: 10%;
+    transform: translate(-25%);
+    
+    
+    height: 450px;
+  }
+  
+  .join_pop_inner > li{
+    width: 400px;
+    text-align: right;
+    display: inline-block;
+    margin: 8px 0px;
+    font-size: 20px;
+  }
+  
+  .join_pop_inner >li> .join_box{
+    width: 200px;
+    height: 30px;
+    margin-left: 10px;
+    border: 1px solid black;
+  }
+  
+  .joinNow{
+    width:400px; 
+    height:50px; 
+    border:0;
+    cursor:pointer;  
+    text-align:center;
+    background:#000; 
+    color:#fff; 
+    font-size:16px;
+    border-radius: 3px;
+    transition:all 0.1s;
+    position: relative;
+    /**/left: 10%;
+    top: -15%;
+    transform: translate(-50%);
+    transform: scale(1);
+    
+  }
+  .joinNow:hover {
+    
+  transform: scale(1.02);   
+  }
+  
+  
+  /*----------------------------------------------*/
+  .close_join{ /*닫기 버튼*/
+    line-height: 22px;
+    border-radius: 12px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    top: -95%;
+    left: 12%;
+  }
+  
+  .close_login{
+    line-height: 22px;
+    border-radius: 12px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    top: -40%;
+    left: 94%;
+  }
+  
