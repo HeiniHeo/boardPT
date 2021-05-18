@@ -57,17 +57,18 @@
         <div class="footer center">
             {% if userid == item.writer %}
             <a href="/board/modify?id={{item.id}}"><input type="button" class="btn" value="MODIFY"></a>
+            <a id="deleteBtn"><input type="button" class="btn" value="DELETE"></a>
             {% else %}
-            <a onclick="alert('수정권한이 없습니다.')"><input type="button" class="btn" value="MODIFY"></a>
+            <a onclick="alert('NOT AUTHORIZED.')"><input type="button" class="btn" value="MODIFY"></a>
+            <a onclick="alert('NOT AUTHORIZED')"><input type="button" class="btn" value="DELETE"></a>
             {% endif %}
             <a href="/board"><input type="button" class="btn" value="BACK"></a>
-            <a id="deleteBtn"><input type="button" class="btn" value="DELETE"></a>
         </div>
         <script type="text/javascript">
             let deleteBtn = document.querySelector('#deleteBtn');
 
             deleteBtn.addEventListener('click', function () {
-                if (confirm("정말 삭제하시겠습니까?")) {
+                if (confirm("DELETE?")) {
                     location.href = "/board/delete?id={{item.id}}"
                 } else {
                     event.preventDefault();
