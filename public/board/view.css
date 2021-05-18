@@ -37,3 +37,13 @@
 
 .footer > a:nth-child(1){float:right; margin-left:30px}
 .footer > a:nth-child(3){float:right;}
+
+.user_closed{
+    top: -2000px;
+    transition: all 1s ease-in-out;
+}
+
+.user_open{
+    top: -645px;
+    transition: all 1s ease-in-out;
+}

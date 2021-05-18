@@ -1,7 +1,3 @@
-.write_body{
-    
-}
-
 /* FOOTER */
 
 #footer{
@@ -14,4 +10,14 @@
 
 #footer > a{
     float: left;
+}
+
+.user_closed{
+    top: -2000px;
+    transition: all 1s ease-in-out;
+}
+
+.user_open{
+    top: -660px;
+    transition: all 1s ease-in-out;
 }

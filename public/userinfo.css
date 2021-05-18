@@ -95,15 +95,6 @@ body{
     float:left;
 }
 
-.user_closed{
-    transform: translateY(100%);
-    transition: all 1s ease-in-out;
-}
-
-.user_open{
-    transform: translateY(-130%);
-    transition: all 1s ease-in-out;
-}
 /*close -50 open 0 */
 #user_content{
     position:absolute;
