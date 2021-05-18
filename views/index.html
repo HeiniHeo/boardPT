@@ -27,23 +27,22 @@
     </div>
   </div>
 
-<form action="/user/join_success" method="post" id="join_form" enctype="multipart/form-data">
-  <div class="join_popup_wrap background"></div>
+  <form action="/user/join_success" method="post" id="join_form" enctype="multipart/form-data">
+    <div class="join_popup_wrap background"></div>
     <div class="join_popup popup">
       <ul class="join_pop_inner">
-        <li>ID <input type="text" id="userid" class="join_box" name="userid"></li>
+        <li>ID <input type="text" id="userid" class="join_box mustFill" name="userid"></li>
         <li id="userid_msg"></li>
-        <li id="userpw_li">PASSWORD <input type="password" id="userpw" class="join_box" name="userpw"></li>
+        <li id="userpw_li">PASSWORD <input type="password" id="userpw" class="join_box mustFill" name="userpw"></li>
         <li>PASSWORD CHECK <input type="password" id="userpw_check" class="join_box" name="userpw_check"></li>
-        <li>E-MAIL <input type="email" class="join_box" name="usermail"></li>
+        <li>E-MAIL <input type="email" class="join_box mustFill" name="usermail"></li>
         <li>IMAGE <input type="file" class="join_img" name="userimage"></li>
-        <li>NAME <input type="text" class="join_box" name="username"></li>
+        <li>NAME <input type="text" class="join_box mustFill" name="username"></li>
       </ul>
-      <input type="submit" class="joinNow" value="JOIN" id="join_submit">
+      <input type="button" class="joinNow" value="JOIN" id="join_submit">
       <span class="close close_join"> X </span>
     </div>
   </form>
-
 
   <form action="/user/login_check" method="post">
     <div class="login_popup_wrap background"> </div>
@@ -64,38 +63,38 @@
     let loginBtn = document.querySelector('.login_btn');
     let close_join = document.querySelector('.close_join');
     let close_login = document.querySelector('.close_login');
-    
-    joinBtn.addEventListener('click',popupSet_join);
-    loginBtn.addEventListener('click',popupSet_login);
-    close_join.addEventListener('click',closeJoin);
-    close_login.addEventListener('click',closeLogin);
 
-    function popupSet_join(){
+    joinBtn.addEventListener('click', popupSet_join);
+    loginBtn.addEventListener('click', popupSet_login);
+    close_join.addEventListener('click', closeJoin);
+    close_login.addEventListener('click', closeLogin);
+
+    function popupSet_join() {
       let join_popup_wrap = document.querySelector('.join_popup_wrap');
       let type2 = (join_popup_wrap.style.display == 'block') ? 'none' : 'block';
       join_popup_wrap.style.display = type2;
 
       let joinPopup = document.querySelector('.join_popup');
-      let type1 = (joinPopup.style.display ==  'block') ? 'none' : 'block';
+      let type1 = (joinPopup.style.display == 'block') ? 'none' : 'block';
       joinPopup.style.display = type1;
 
       joinBtn.style.display = 'none';
       loginBtn.style.display = 'none';
     }
 
-    function popupSet_login(){
+    function popupSet_login() {
       let loginPopup = document.querySelector('.login_popup_wrap');
-      let type2 = (loginPopup.style.display ==  'block') ? 'none' : 'block';
+      let type2 = (loginPopup.style.display == 'block') ? 'none' : 'block';
       loginPopup.style.display = type2;
 
       let login_popup = document.querySelector('.login_popup');
-      let type1 = (login_popup.style.display ==  'block') ? 'none' : 'block';
+      let type1 = (login_popup.style.display == 'block') ? 'none' : 'block';
       login_popup.style.display = type1;
-    
+
       joinBtn.style.display = 'none';
       loginBtn.style.display = 'none';
     }
-    
+
     function closeJoin() {
       let join_popup_wrap = document.querySelector('.join_popup_wrap');
       let type1 = (join_popup_wrap.style.display == 'none') ? 'block' : 'none';
@@ -117,7 +116,7 @@
       let login_popup = document.querySelector('.login_popup');
       let type = (login_popup.style.display) == 'none' ? 'block' : 'none';
       login_popup.style.display = type;
-      
+
       joinBtn.style.display = 'block';
       loginBtn.style.display = 'block';
     }
@@ -136,12 +135,12 @@
     pw.addEventListener('focus', () => {
       pw.setAttribute('style', 'background:#fff;')
     })
-</script>
-{% endif %}
+  </script>
+  {% endif %}
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-<!--위에 이거 axois 가져온거래요-->
-<script type="text/javascript">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+  <!--위에 이거 axois 가져온거래요-->
+  <script type="text/javascript">
 
     const pwd1 = document.querySelector('#userpw');
     const pwd2 = document.querySelector('#userpw_check');
@@ -151,48 +150,66 @@
     const userid = document.querySelector('#userid');
     const join_btn = document.querySelector('#join_submit');
     const userpw_li = document.querySelector('#userpw_li');
+    const mustFill = document.querySelectorAll('.mustFill');
 
     //===============아이디 체크하는 부분===========================================     
-    async function userid_check(){
-    let data = await axios.get(`http://localhost:3000/user/userid_check?userid=${userid.value}`);                     
-    //중복 :FALSE 중복X : TRUE
-    //console.log(data);
-        login_flag = data.data.login;// 이건 기준치 (중복 되지 않았다고 기본값주고 작업 시작)
+    async function userid_check() {
+      let data = await axios.get(`http://localhost:3000/user/userid_check?userid=${userid.value}`);
+      //중복 :FALSE 중복X : TRUE
+      //console.log(data);
+      login_flag = data.data.login;// 이건 기준치 (중복 되지 않았다고 기본값주고 작업 시작)
 
-        if( login_flag ){ //true이면(중복이 아니면)
-            userid_msg.innerHTML = "You can use this ID."
-            userid_msg.style.color = 'blue';
-            userid_msg.style.display = 'block';
-            userpw_li.style.margin = '0px 0px 8px 0px';
-        }else{ // false이면(중복이면)
-            userid_msg.innerHTML = 'This ID already exist.'
-            userid_msg.style.color = 'red';
-            userid_msg.style.display = 'block';
-            userpw_li.style.margin = '0px 0px 8px 0px';
-        } 
+      if (login_flag) { //true이면(중복이 아니면)
+        userid_msg.innerHTML = "You can use this ID."
+        userid_msg.style.color = 'blue';
+        userid_msg.style.display = 'block';
+        userpw_li.style.margin = '0px 0px 8px 0px';
+      } else { // false이면(중복이면)
+        userid_msg.innerHTML = 'This ID already exist.'
+        userid_msg.style.color = 'red';
+        userid_msg.style.display = 'block';
+        userpw_li.style.margin = '0px 0px 8px 0px';
+      }
     }
-    userid.addEventListener('focusout',userid_check);
-    
-//============================비밀번호 확인부분==================================
-    function password_check(){
-                console.log( pwd1.value, pwd2.value );
-                return pwd1.value == pwd2.value;
+    userid.addEventListener('focusout', userid_check);
+
+    //=================빈칸 확인 부분=====================================
+    function null_check() {
+      for (i = 0; i < mustFill.length; i++) {
+        if (mustFill[i].value == '') {
+          return false
         }
+      }
+      return true
+    }
+
+    //============================비밀번호 확인부분==================================
+    function password_check() {
+      console.log(pwd1.value, pwd2.value);
+      return pwd1.value == pwd2.value;
+    }
+
+    join_btn.addEventListener('click', () => {
+      let pwd_check = password_check(); //boolean
+      let blank_check = null_check();
+      if (pwd_check == false) {
+        alert('CHECK YOUR PASSWORD');
+        pwd1.value = '';
+        pwd2.value = '';
+        pwd1.focus();
+        console.log('asdf')
+        return
+      }
+      if (blank_check == false) {
+        console.log('asdf')
+        alert('FILL YOUR BLANK')
         
-        join_btn.addEventListener('click',()=>{ 
-        pwd_check = password_check(); //boolean
-        console.log(pwd_check);
-        if(pwd_check){// password_check를 실행한 결과값이 트루면
-          join_frm.submit();  
-        }else{
-            pwd1.value='';
-            pwd2.value='';
-            pwd1.focus(); // 비번1 지우고 비번2 지우고 비번 1로 커서이동
-            alert('Please checkout your PASSWORD.')
-            event.preventDefault();
-        }
-    })  //login_frm.submit() // 요거를 조건이 맞을때에만 실행되게
-</script>
+        return
+      }
+      join_frm.submit();
+    })
+
+  </script>
 </body>
 
 </html>
