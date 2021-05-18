@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/board/view.css">
     <link rel="stylesheet" href="/userinfo.css">
 </head>
-
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 <body>
     <div id="wrap" class="w100">
         <!--HEADER-->
@@ -59,20 +59,120 @@
             <a href="/board"><input type="button" class="btn" value="BACK"></a>
             <a id="deleteBtn"><input type="button" class="btn" value="DELETE"></a>
         </div>
-        <script type="text/javascript">
-            let deleteBtn = document.querySelector('#deleteBtn');
 
-            deleteBtn.addEventListener('click', function () {
-                if (confirm("정말 삭제하시겠습니까?")) {
-                    location.href = "/board/delete?id={{item.id}}"
-                } else {
-                    event.preventDefault();
-                }
-            })
-        </script>
+     
+
+        <div class = "comment center">
+
+                <div class = "entcmt">
+                    <input type="text" id="userid" value="{{userid}}" style="display:none">
+                    <p>{{userid}}</p>
+                    <p><input type = "text" id = "comment_content" name="comment_content"></p>
+                    <p><input type = "button" value = "등록" id="addcomment"></p>
+                </div>
+
+                <input type = "text" id = "itemid" name="itemid" value="{{item.id}}" style="display:none">
+
+            <ul class = "newcmt">
+
+              </ul>
+           
+        </div>
+    </div>
+    <script type="text/javascript">
+    let comment_content = document.querySelector('#comment_content');
+    let itemid = document.querySelector('#itemid');
+    let userid = document.querySelector('#userid');
+    let addcomment = document.querySelector('#addcomment');
+    let newcmt = document.querySelector('.newcmt')
+
+    loadComment();
+
+    
+    async function loadComment(){
+        let addComment = await axios.post('http://localhost:3000/comment/',{
+            comment_content:comment_content.value,
+            itemid:itemid.value,
+            writer:userid.value,
+        })
+            comment_content.value='';
+
+            addComment.data.commentList.forEach(ele => {
+            const li = document.createElement('li');
+            const cmt_box = document.createElement('div');
+            const cmt_userid = document.createElement('p');
+            const cmt_content = document.createElement('p');
+            const cmt_date = document.createElement('p');
+            const cmt_like = document.createElement('p');
+            const cmt_like_btn = document.createElement('button');
+            cmt_userid.innerHTML = ele.commentWriter;
+            cmt_content.innerHTML = ele.commentContent;
+            cmt_date.innerHTML = ele.commentDate;
+            cmt_like.innerHTML = ele.commentLike;
+            cmt_like_btn.innerHTML = '乃';
+
+            cmt_box.appendChild(cmt_userid);
+            cmt_box.appendChild(cmt_content);
+            cmt_box.appendChild(cmt_date);
+            cmt_box.appendChild(cmt_like);
+            cmt_box.appendChild(cmt_like_btn);
+
+            newcmt.appendChild(cmt_box);
+        });
+    }
+        
+
+        async function postComment(){
+            if(comment_content!=''){
+                let addComment = await axios.post('http://localhost:3000/comment/',{
+                    comment_content:comment_content.value,
+                    itemid:itemid.value,
+                    writer:userid.value,
+                })
+                comment_content.value='';
+
+                // while (newcmt.hasChildNodes()) { newcmt.removeChild(newcmt.firstChild); }
+                addComment.data.commentList.forEach(ele => {
+                    const li = document.createElement('li');
+                    const cmt_box = document.createElement('div');
+                    const cmt_userid = document.createElement('p');
+                    const cmt_content = document.createElement('p');
+                    const cmt_date = document.createElement('p');
+                    const cmt_like = document.createElement('p');
+                    const cmt_like_btn = document.createElement('button');
+                    cmt_userid.innerHTML = ele.commentWriter;
+                    cmt_content.innerHTML = ele.commentContent;
+                    cmt_date.innerHTML = ele.commentDate;
+                    cmt_like.innerHTML = ele.commentLike;
+                    cmt_like_btn.innerHTML = '乃';
+
+                    cmt_box.appendChild(cmt_userid);
+                    cmt_box.appendChild(cmt_content);
+                    cmt_box.appendChild(cmt_date);
+                    cmt_box.appendChild(cmt_like);
+                    cmt_box.appendChild(cmt_like_btn);
+
+                    newcmt.appendChild(cmt_box);
+                });
+            }
+        }
+    addcomment.addEventListener('click',postComment);
+    </script>
+
+    <script type="text/javascript">
+        let deleteBtn = document.querySelector('#deleteBtn');
+
+        deleteBtn.addEventListener('click', function () {
+            if (confirm("정말 삭제하시겠습니까?")) {
+                location.href = "/board/delete?id={{item.id}}"
+            } else {
+                event.preventDefault();
+            }
+        })
+    </script>
 
         {% endfor %}
-    </div>
+
 
     {% include '../user/user_info.html' %}
     {% include '../template/bottom.html' %}

@@ -1,5 +1,6 @@
 const { User } = require('../../models/index');
 const { Board } = require('../../models/index');
+const { Comment } = require('../../models/index');
 const Sequelize = require('sequelize');
 
 let board = async (req, res) => {
@@ -58,6 +59,11 @@ let board = async (req, res) => {
 };
 
 let write = async (req, res) => {
+    let getuserinfo = await User.findAll({
+        where: {
+            userid: req.session.uid
+        }
+    })
     let user_img = await User.findOne({
         where:{userid:req.session.uid}
     })
@@ -86,6 +92,26 @@ let view = async (req, res) => {
         where:{userid:req.session.uid}
     })
     let userimage = user_img.dataValues.userimage;
+
+        //댓글목록 불러오기
+    // let commentWriter = req.body.writer;
+    // let commentContent = req.body.comment_content;
+    // let commentAt = req.body.itemid;
+    // let commentResults = await Comment.create({commentWriter, commentContent, commentAt})
+    // let commentList = await Comment.findAll({
+    //     where: {
+    //         commentAt: req.body.itemid,
+    //     },
+    //     order: [['id', 'ASC']],
+    // });
+
+    // res.json({
+    //     commentList,
+    // })
+
+    // console.log(commentList,'댓글')
+
+    //
 
     let boardList = await Board.findAll({
         where: { id: req.query.id }
