@@ -22,12 +22,13 @@ let addComment = async (req, res) => {
 
 };
 
-let addLike = async (req,res) => {
-    console.log(cmt_like)
+let delComment = async (req,res) => {
+    await console.log(req.body.cmt_like)
+
 
 }
 
 module.exports = {
     addComment,
-    addLike
+    delComment
 };

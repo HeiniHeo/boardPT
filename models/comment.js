@@ -29,7 +29,7 @@ module.exports = class Board extends Sequelize.Model{
             commentLike:{
                 type:Sequelize.INTEGER(11),
                 allowfull:false,
-                defaultValue: 1,
+                defaultValue: 0,
             }
         },{
             sequelize,
