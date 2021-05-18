@@ -35,10 +35,8 @@
 
         {% for item in boardList %}
 
-        <form action="/board/modify_success" method="post">
-
+        <form action="/board/modify_success" method="post" id="postupload">
             <!--TEXT INPUT-->
-
             <div id="main" class="center">
                 <div class="write_title write_box w100">
                     <input type="text" name="title" class="texttitle" value="{{item.title}}">
@@ -50,14 +48,33 @@
 
             <!--FOOTER-->
             <div id="footer" class="center">
-                <input type="submit" class="btn textbtn" value="MODIFY"  onclick="text_empty_check()">
+                <input type="button" class="btn textbtn" value="MODIFY"  onclick="text_empty_check()">
                 <a href="/board"><input type="button" class="btn" value="BACK"></a>
                 <textarea style="display: none;" class = "userid" name="boardid">{{boardid}}</textarea>
             </div>
 
         </form>
-
         {% endfor %}
+        <script type="text/javascript">
+            const textbtn = document.querySelector('.textbtn');
+            const postupload = document.querySelector('#postupload');
+    
+            textbtn.addEventListener('click',()=>{
+            let texttitle = document.querySelector('.texttitle').value;
+            let textcontent = document.querySelector('.textcontent').value;
+            console.log(texttitle);
+            console.log(textcontent)
+                if(texttitle == ''){
+                    alert('제목을 입력하세요.');
+                    return
+                }
+                if(textcontent == ''){
+                    alert('내용을 입력하세요');
+                    return
+                }
+                postupload.submit();
+            })
+        </script>
         
 {% include '../user/user_info.html' %}
 {% include '../template/bottom.html' %}
