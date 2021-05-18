@@ -73,7 +73,7 @@ let write = async (req, res) => {
         userimage:userimage,
         userinfo:getuserinfo
     });
-    console.log(req.session);
+
 };
 
 let write_success = async (req, res) => {
@@ -95,27 +95,7 @@ let view = async (req, res) => {
         where:{userid:req.session.uid}
     })
     let userimage = user_img.dataValues.userimage;
-    let username = user_img.dataValues.username;
 
-        //댓글목록 불러오기
-    // let commentWriter = req.body.writer;
-    // let commentContent = req.body.comment_content;
-    // let commentAt = req.body.itemid;
-    // let commentResults = await Comment.create({commentWriter, commentContent, commentAt})
-    // let commentList = await Comment.findAll({
-    //     where: {
-    //         commentAt: req.body.itemid,
-    //     },
-    //     order: [['id', 'ASC']],
-    // });
-
-    // res.json({
-    //     commentList,
-    // })
-
-    // console.log(commentList,'댓글')
-
-    //
 
     let boardList = await Board.findAll({
         where: { id: req.query.id }
@@ -165,7 +145,6 @@ let modify_success = async (req, res) => {
     let title = req.body.title;
     let content = req.body.content;
     let id = req.body.boardid;
-    console.log(title, content, id)
 
     let boardList = await Board.update({
         title,

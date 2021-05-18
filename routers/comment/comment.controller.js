@@ -20,9 +20,14 @@ let addComment = async (req, res) => {
         commentList,
     })
 
-    console.log(commentList)
 };
 
+let addLike = async (req,res) => {
+    console.log(cmt_like)
+
+}
+
 module.exports = {
-    addComment
+    addComment,
+    addLike
 };

@@ -101,6 +101,7 @@
         })
             comment_content.value='';
 
+            while (newcmt.hasChildNodes()) { newcmt.removeChild(newcmt.firstChild); }
             addComment.data.commentList.forEach(ele => {
             const li = document.createElement('li');
             const cmt_box = document.createElement('div');
@@ -121,6 +122,8 @@
             cmt_box.appendChild(cmt_like);
             cmt_box.appendChild(cmt_like_btn);
 
+            cmt_like_btn.className = "cmt_like_btn";
+
             newcmt.appendChild(cmt_box);
         });
     }
@@ -135,7 +138,7 @@
                 })
                 comment_content.value='';
 
-                // while (newcmt.hasChildNodes()) { newcmt.removeChild(newcmt.firstChild); }
+                while (newcmt.hasChildNodes()) { newcmt.removeChild(newcmt.firstChild); }
                 addComment.data.commentList.forEach(ele => {
                     const li = document.createElement('li');
                     const cmt_box = document.createElement('div');
@@ -157,10 +160,14 @@
                     cmt_box.appendChild(cmt_like_btn);
 
                     newcmt.appendChild(cmt_box);
+
+                    cmt_like_btn.className = "cmt_like_btn";
                 });
             }
         }
+
     addcomment.addEventListener('click',postComment);
+
     </script>
 
     <script type="text/javascript">
@@ -173,6 +180,19 @@
                 event.preventDefault();
             }
         })
+    </script>
+    <script type="text/javascript">
+    // let cmt_like_btn = document.querySelector('.cmt_like_btn');
+    // let cmt_like = document.querySelector('.cmt_like');
+    // console.log(cmt_like_btn,cmt_like)
+    
+    // async function putLike(){
+    //     let addLike = await axios.post('http://localhost:3000/comment/',{
+    //                 cmt_like:cmt_like,
+    //             })
+    //     cmt_like.innerHTML = ele.commentLike;
+    // }
+    // cmt_like_btn.addEventListener('click',putLike)
     </script>
 
         {% endfor %}
