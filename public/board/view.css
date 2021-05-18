@@ -65,12 +65,13 @@
     padding-right:10px;
 }
 /*  댓글 관련 CSS 여기까지 */
+
 .user_closed{
-    top: -2000px;
+    top: -100%;
     transition: all 1s ease-in-out;
 }
 
 .user_open{
-    top: -645px;
+    top: 210px;
     transition: all 1s ease-in-out;
 }

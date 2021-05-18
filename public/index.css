@@ -133,8 +133,7 @@ button{
 }
 
 .write_box > textarea{
-    overflow: hidden;
-    resize: none;
+    overflow-y: auto;
     height: 100%;
     width: 100%;
     font-size: 16px;

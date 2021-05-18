@@ -58,13 +58,36 @@
         <div class="footer center">
             {% if userid == item.writer %}
             <a href="/board/modify?id={{item.id}}"><input type="button" class="btn" value="MODIFY"></a>
+            <a id="deleteBtn"><input type="button" class="btn" value="DELETE"></a>
             {% else %}
-            <a onclick="alert('수정권한이 없습니다.')"><input type="button" class="btn" value="MODIFY"></a>
+            <a onclick="alert('NOT AUTHORIZED.')"><input type="button" class="btn" value="MODIFY"></a>
+            <a onclick="alert('NOT AUTHORIZED')"><input type="button" class="btn" value="DELETE"></a>
             {% endif %}
             <a href="/board"><input type="button" class="btn" value="BACK"></a>
-            <a id="deleteBtn"><input type="button" class="btn" value="DELETE"></a>
         </div>
+        <script type="text/javascript">
+            let deleteBtn = document.querySelector('#deleteBtn');
 
+            deleteBtn.addEventListener('click', function () {
+                if (confirm("DELETE?")) {
+                    location.href = "/board/delete?id={{item.id}}"
+                } else {
+                    event.preventDefault();
+                }
+            })
+        </script>
+
+        <div class="comment center">
+            <div class="entcmt">
+                <input type="text" id="userid" value="{{userid}}" style="display:none">
+                <p>{{userid}}</p>
+                <p><input type="text" id="comment_content" name="comment_content"></p>
+                <p><input type="button" value="등록" id="addcomment"></p>
+            </div>
+            <input type="text" id="itemid" name="itemid" value="{{item.id}}" style="display:none">
+            <ul class="newcmt">
+
+<<<<<<< HEAD
 
 
         <div class="comment center">
@@ -80,6 +103,8 @@
 
             <ul class="newcmt">
 
+=======
+>>>>>>> 719b6ab374d4db7440829e65ba41bd13e7dbb767
             </ul>
 
         </div>

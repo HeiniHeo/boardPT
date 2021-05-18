@@ -17,11 +17,16 @@ body{
     height:100vh;
     position:absolute;
 }*/
+#user_wrap{
+    position: absolute;
+    left:50%;
+    transform: translate(-50%, 0%);
+    z-index: 666;
+}
 
 #user_center{
     width:1200px;
     height:600px;
-    margin: 0 auto;
     position:relative;
     background: white;
     box-shadow: 5px 5px 3px gray;
@@ -94,6 +99,7 @@ body{
     display:block;
     float:left;
 }
+
 
 /*close -50 open 0 */
 #user_content{

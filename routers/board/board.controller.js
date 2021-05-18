@@ -7,6 +7,7 @@ let board = async (req, res) => {
     let user_img = await User.findOne({
         where:{userid:req.session.uid}
     })
+    
     let userimage = user_img.dataValues.userimage;
 
     let page = (req.query.id == undefined) ? 1 : req.query.id;

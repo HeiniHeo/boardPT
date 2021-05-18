@@ -44,18 +44,17 @@
     </div>
   </form>
 
-  <form action="/user/login_check" method="post">
+  <form action="/user/login_check" method="post" id="login_form">
     <div class="login_popup_wrap background"> </div>
     <div class="login_popup popup">
       <ul class="login_pop_inner">
-        <li>ID</li><input type="text" name="userid" id="userid" class="login_box">
-        <li>PASSWORD</li><input type="password" name="userpw" id="userpw" class="login_box">
+        <li>ID</li><input type="text" name="userid" id="userid" class="login_box mustFilllog">
+        <li>PASSWORD</li><input type="password" name="userpw" id="userpw" class="login_box mustFilllog">
       </ul>
       <span class="close close_login"> X </span>
-      <input type="submit" class="loginNow" value="LOGIN">
+      <input type="button" class="loginNow" value="LOGIN">
     </div>
   </form>
-
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
   <script type="text/javascript">
@@ -125,7 +124,7 @@
 
   {% if flag == '0' %}
   <script type="text/javascript">
-    alert('아이디와 패스워드를 확인해주세요');
+    alert('INVALID ID OR PASSWORD');
     const id = document.querySelector('#userid');
     const pw = document.querySelector('#userpw');
 
@@ -151,13 +150,14 @@
     const join_btn = document.querySelector('#join_submit');
     const userpw_li = document.querySelector('#userpw_li');
     const mustFill = document.querySelectorAll('.mustFill');
+    const login_form = document.querySelector('#login_form');
+    const login_btn = document.querySelector('.loginNow');
+    const mustFilllog = document.querySelectorAll('.mustFilllog');
 
     //===============아이디 체크하는 부분===========================================     
     async function userid_check() {
       let data = await axios.get(`http://localhost:3000/user/userid_check?userid=${userid.value}`);
-      //중복 :FALSE 중복X : TRUE
-      //console.log(data);
-      login_flag = data.data.login;// 이건 기준치 (중복 되지 않았다고 기본값주고 작업 시작)
+      let login_flag = data.data.login;
 
       if (login_flag) { //true이면(중복이 아니면)
         userid_msg.innerHTML = "You can use this ID."
@@ -183,6 +183,25 @@
       return true
     }
 
+    function null_check_login() {
+      for (i = 0; i < mustFilllog.length; i++) {
+        if (mustFilllog[i].value == '') {
+          return false
+        }
+      }
+      return true
+    }
+
+    //============================로그인 확인 부분==================================
+    login_btn.addEventListener('click',()=>{
+      let blank_check_log = null_check_login();
+      if(blank_check_log == false){
+        alert('FILL YOUR BLANK');
+        return
+      }
+      login_form.submit();
+    })
+
     //============================비밀번호 확인부분==================================
     function password_check() {
       console.log(pwd1.value, pwd2.value);
@@ -203,7 +222,7 @@
       if (blank_check == false) {
         console.log('asdf')
         alert('FILL YOUR BLANK')
-        
+
         return
       }
       join_frm.submit();
