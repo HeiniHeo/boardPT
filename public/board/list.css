@@ -1,3 +1,12 @@
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover{
+    cursor:pointer;
+}
+
 #board{
     background-color: #ededed;
     width: 100%;
@@ -58,4 +67,14 @@ td:nth-child(5){
 #pagenation>a{
     padding: 10px;
     box-sizing: border-box;
+}
+
+.user_closed{
+    top: -2000px;
+    transition: all 1s ease-in-out;
+}
+
+.user_open{
+    top: -750px;
+    transition: all 1s ease-in-out;
 }

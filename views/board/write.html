@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=no;" /> 
+    <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=no;" />
     <title> WRITE </title>
     <link rel="stylesheet" href="/index.css">
     <link rel="stylesheet" href="/board/write.css">
     <link rel="stylesheet" href="/userinfo.css">
 </head>
+
 <body>
     <div id="wrap" class="w100">
 
@@ -20,7 +22,7 @@
             <div class="small_info">
                 <ul>
                     <li class="logout"><a href="/">
-                        <input type="button" class="btn" value="logout">
+                            <input type="button" class="btn" value="logout">
                         </a>
                     </li>
                     {% if userimage == '' %}
@@ -33,10 +35,8 @@
             </div>
         </div>
 
-        <form action="/board/write_success" method="post">
-
+        <form action="/board/write_success" method="post" id="postupload">
             <!--TEXT INPUT-->
-
             <div id="main" class="center">
                 <div class="write_title write_box w100">
                     <input type="text" name="title" class="texttitle">
@@ -48,25 +48,31 @@
 
             <!--FOOTER-->
             <div id="footer" class="center">
-                <input type="submit" class="btn textbtn" value="WRITE" onclick="text_empty_check()">
+                <input type="button" class="btn textbtn" value="WRITE">
                 <a href="/board"><input type="button" class="btn" value="BACK"></a>
             </div>
-            <script type="text/javascript">
-                let texttitle = document.getElementsByClassName('texttitle');
-    let textcontent = document.getElementsByClassName('textcontent');
-    let textbtn = document.getElementsByClassName('textbtn');
-    console.log(texttitle,textcontent);
-    function text_empty_check(){
-        if(texttitle.value == ""){
-            alert('제목을 입력해주십시오');
-            event.preventDefault();
-        } else if(textcontent.value == ""){
-            alert('내용을 입력해주십시오');
-            event.preventDefault();
-        }
-    }
-            </script>
         </form>
     </div>
-{% include '../user/user_info.html' %}
-{% include '../template/bottom.html' %}
+    <script type="text/javascript">
+        const textbtn = document.querySelector('.textbtn');
+        const postupload = document.querySelector('#postupload');
+
+        textbtn.addEventListener('click',()=>{
+        let texttitle = document.querySelector('.texttitle').value;
+        let textcontent = document.querySelector('.textcontent').value;
+        console.log(texttitle);
+        console.log(textcontent)
+            if(texttitle == ''){
+                alert('제목을 입력하세요.');
+                return
+            }
+            if(textcontent == ''){
+                alert('내용을 입력하세요');
+                return
+            }
+            postupload.submit();
+        })
+    </script>
+
+    {% include '../user/user_info.html' %}
+    {% include '../template/bottom.html' %}

@@ -48,7 +48,6 @@ let board = async (req, res) => {
                 boardList:result,
                 pagination:page_array,
                 userinfo:getuserinfo,
-                userinfo:getuserinfo,
                 userid:req.session.uid,
                 userimage:userimage
             });
@@ -71,7 +70,8 @@ let write = async (req, res) => {
 
     res.render('./board/write.html',{
         userid:req.session.uid,
-        userimage:userimage
+        userimage:userimage,
+        userinfo:getuserinfo
     });
     console.log(req.session);
 };
@@ -88,10 +88,14 @@ let write_success = async (req, res) => {
 }
 
 let view = async (req, res) => {
+    let getuserinfo = await User.findAll({
+        where: {userid: req.session.uid,}
+    })
     let user_img = await User.findOne({
         where:{userid:req.session.uid}
     })
     let userimage = user_img.dataValues.userimage;
+    let username = user_img.dataValues.username;
 
         //댓글목록 불러오기
     // let commentWriter = req.body.writer;
@@ -128,11 +132,17 @@ let view = async (req, res) => {
     res.render('./board/view.html', {
         boardList: boardList,
         userid:req.session.uid,
-        userimage:userimage
+        userimage:userimage,
+        userinfo:getuserinfo,
     });
 };
 
 let modify = async (req, res) => {
+    let getuserinfo = await User.findAll({
+        where: {
+            userid: req.session.uid,
+        }
+    })
     let user_img = await User.findOne({
         where:{userid:req.session.uid}
     })
@@ -145,7 +155,8 @@ let modify = async (req, res) => {
         boardList: boardList,
         boardid: req.query.id,
         userid:req.session.uid,
-        userimage:userimage
+        userimage:userimage,
+        userinfo: getuserinfo
     });
 
 };
