@@ -69,12 +69,3 @@ td:nth-child(5){
     box-sizing: border-box;
 }
 
-.user_closed{
-    top: -2000px;
-    transition: all 1s ease-in-out;
-}
-
-.user_open{
-    top: -750px;
-    transition: all 1s ease-in-out;
-}

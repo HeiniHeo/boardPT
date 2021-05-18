@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/userinfo.css">
 </head>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+
 <body>
     <div id="wrap" class="w100">
         <!--HEADER-->
@@ -76,79 +77,72 @@
             })
         </script>
 
-     
+        <div class="comment center">
+            <div class="entcmt">
+                <input type="text" id="userid" value="{{userid}}" style="display:none">
+                <p>{{userid}}</p>
+                <p><input type="text" id="comment_content" name="comment_content"></p>
+                <p><input type="button" value="등록" id="addcomment"></p>
+            </div>
+            <input type="text" id="itemid" name="itemid" value="{{item.id}}" style="display:none">
+            <ul class="newcmt">
 
-        <div class = "comment center">
+            </ul>
 
-                <div class = "entcmt">
-                    <input type="text" id="userid" value="{{userid}}" style="display:none">
-                    <p>{{userid}}</p>
-                    <p><input type = "text" id = "comment_content" name="comment_content"></p>
-                    <p><input type = "button" value = "등록" id="addcomment"></p>
-                </div>
-
-                <input type = "text" id = "itemid" name="itemid" value="{{item.id}}" style="display:none">
-
-            <ul class = "newcmt">
-
-              </ul>
-           
         </div>
     </div>
     <script type="text/javascript">
-    let comment_content = document.querySelector('#comment_content');
-    let itemid = document.querySelector('#itemid');
-    let userid = document.querySelector('#userid');
-    let addcomment = document.querySelector('#addcomment');
-    let newcmt = document.querySelector('.newcmt')
+        let comment_content = document.querySelector('#comment_content');
+        let itemid = document.querySelector('#itemid');
+        let userid = document.querySelector('#userid');
+        let addcomment = document.querySelector('#addcomment');
+        let newcmt = document.querySelector('.newcmt')
 
-    loadComment();
+        loadComment();
 
-    
-    async function loadComment(){
-        let addComment = await axios.post('http://localhost:3000/comment/',{
-            comment_content:comment_content.value,
-            itemid:itemid.value,
-            writer:userid.value,
-        })
-            comment_content.value='';
+        async function loadComment() {
+            let addComment = await axios.post('http://localhost:3000/comment/', {
+                comment_content: comment_content.value,
+                itemid: itemid.value,
+                writer: userid.value,
+            })
+            comment_content.value = '';
 
             while (newcmt.hasChildNodes()) { newcmt.removeChild(newcmt.firstChild); }
             addComment.data.commentList.forEach(ele => {
-            const li = document.createElement('li');
-            const cmt_box = document.createElement('div');
-            const cmt_userid = document.createElement('p');
-            const cmt_content = document.createElement('p');
-            const cmt_date = document.createElement('p');
-            const cmt_like = document.createElement('p');
-            const cmt_like_btn = document.createElement('button');
-            cmt_userid.innerHTML = ele.commentWriter;
-            cmt_content.innerHTML = ele.commentContent;
-            cmt_date.innerHTML = ele.commentDate;
-            cmt_like.innerHTML = ele.commentLike;
-            cmt_like_btn.innerHTML = '乃';
+                const li = document.createElement('li');
+                const cmt_box = document.createElement('div');
+                const cmt_userid = document.createElement('p');
+                const cmt_content = document.createElement('p');
+                const cmt_date = document.createElement('p');
+                const cmt_like = document.createElement('p');
+                const cmt_like_btn = document.createElement('button');
+                cmt_userid.innerHTML = ele.commentWriter;
+                cmt_content.innerHTML = ele.commentContent;
+                cmt_date.innerHTML = ele.commentDate;
+                cmt_like.innerHTML = ele.commentLike;
+                cmt_like_btn.innerHTML = '乃';
 
-            cmt_box.appendChild(cmt_userid);
-            cmt_box.appendChild(cmt_content);
-            cmt_box.appendChild(cmt_date);
-            cmt_box.appendChild(cmt_like);
-            cmt_box.appendChild(cmt_like_btn);
+                cmt_box.appendChild(cmt_userid);
+                cmt_box.appendChild(cmt_content);
+                cmt_box.appendChild(cmt_date);
+                cmt_box.appendChild(cmt_like);
+                cmt_box.appendChild(cmt_like_btn);
 
-            cmt_like_btn.className = "cmt_like_btn";
+                cmt_like_btn.className = "cmt_like_btn";
 
-            newcmt.appendChild(cmt_box);
-        });
-    }
-        
+                newcmt.appendChild(cmt_box);
+            });
+        }
 
-        async function postComment(){
-            if(comment_content!=''){
-                let addComment = await axios.post('http://localhost:3000/comment/',{
-                    comment_content:comment_content.value,
-                    itemid:itemid.value,
-                    writer:userid.value,
+        async function postComment() {
+            if (comment_content != '') {
+                let addComment = await axios.post('http://localhost:3000/comment/', {
+                    comment_content: comment_content.value,
+                    itemid: itemid.value,
+                    writer: userid.value,
                 })
-                comment_content.value='';
+                comment_content.value = '';
 
                 while (newcmt.hasChildNodes()) { newcmt.removeChild(newcmt.firstChild); }
                 addComment.data.commentList.forEach(ele => {
@@ -178,7 +172,7 @@
             }
         }
 
-    addcomment.addEventListener('click',postComment);
+        addcomment.addEventListener('click', postComment);
 
     </script>
 
@@ -197,7 +191,7 @@
     // let cmt_like_btn = document.querySelector('.cmt_like_btn');
     // let cmt_like = document.querySelector('.cmt_like');
     // console.log(cmt_like_btn,cmt_like)
-    
+
     // async function putLike(){
     //     let addLike = await axios.post('http://localhost:3000/comment/',{
     //                 cmt_like:cmt_like,
@@ -207,7 +201,7 @@
     // cmt_like_btn.addEventListener('click',putLike)
     </script>
 
-        {% endfor %}
+    {% endfor %}
 
 
     {% include '../user/user_info.html' %}
