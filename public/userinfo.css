@@ -58,7 +58,7 @@ body{
     top:30%;
     background:gray;
     border-radius: 125px;
-    border:20px solid gray;
+    border:1px solid lightgray;
     box-sizing: border-box;
 }
 

@@ -14,13 +14,12 @@
 <body>
   <div id="wrap">
     <div id="main_Btn">
-      <button type="button" class="pop_btn btnBox login_btn">LOG IN</a></button>
-      <button type="button" class="pop_btn btnBox join_btn">JOIN</a></button>
+      <button type="button" class="pop_btn btnBox login_btn">LOG IN</button>
+      <button type="button" class="pop_btn btnBox join_btn">JOIN</button>
     </div>
     <div class="verticalLine"> </div>
 
-
-    <div id="copy_write">
+    <div id="copy_write" class="intro">
       <h1>Create your noticeboard, <br />
         <br />
         TRY NOW.
@@ -28,14 +27,13 @@
     </div>
   </div>
 
-
 <form action="/user/join_success" method="post" id="join_form" enctype="multipart/form-data">
-  <div class="join_popup_wrap"></div>
-    <div class="join_popup">
+  <div class="join_popup_wrap background"></div>
+    <div class="join_popup popup">
       <ul class="join_pop_inner">
         <li>ID <input type="text" id="userid" class="join_box" name="userid"></li>
-        <li style="display: none;" id="userid_msg"></li>
-        <li>PASSWORD <input type="password" id="userpw" class="join_box" name="userpw"></li>
+        <li id="userid_msg"></li>
+        <li id="userpw_li">PASSWORD <input type="password" id="userpw" class="join_box" name="userpw"></li>
         <li>PASSWORD CHECK <input type="password" id="userpw_check" class="join_box" name="userpw_check"></li>
         <li>E-MAIL <input type="email" class="join_box" name="usermail"></li>
         <li>IMAGE <input type="file" class="join_img" name="userimage"></li>
@@ -48,8 +46,8 @@
 
 
   <form action="/user/login_check" method="post">
-    <div class="login_popup_wrap"> </div>
-    <div class="login_popup">
+    <div class="login_popup_wrap background"> </div>
+    <div class="login_popup popup">
       <ul class="login_pop_inner">
         <li>ID</li><input type="text" name="userid" id="userid" class="login_box">
         <li>PASSWORD</li><input type="password" name="userpw" id="userpw" class="login_box">
@@ -80,8 +78,10 @@
       let joinPopup = document.querySelector('.join_popup');
       let type1 = (joinPopup.style.display ==  'block') ? 'none' : 'block';
       joinPopup.style.display = type1;
-    }
 
+      joinBtn.style.display = 'none';
+      loginBtn.style.display = 'none';
+    }
 
     function popupSet_login(){
       let loginPopup = document.querySelector('.login_popup_wrap');
@@ -91,9 +91,11 @@
       let login_popup = document.querySelector('.login_popup');
       let type1 = (login_popup.style.display ==  'block') ? 'none' : 'block';
       login_popup.style.display = type1;
+    
+      joinBtn.style.display = 'none';
+      loginBtn.style.display = 'none';
     }
     
-
     function closeJoin() {
       let join_popup_wrap = document.querySelector('.join_popup_wrap');
       let type1 = (join_popup_wrap.style.display == 'none') ? 'block' : 'none';
@@ -102,6 +104,9 @@
       let joinPopup = document.querySelector('.join_popup');
       let type2 = (joinPopup.style.display == 'none') ? 'block' : 'none';
       joinPopup.style.display = type2;
+
+      joinBtn.style.display = 'block';
+      loginBtn.style.display = 'block';
     }
 
     function closeLogin() {
@@ -112,6 +117,9 @@
       let login_popup = document.querySelector('.login_popup');
       let type = (login_popup.style.display) == 'none' ? 'block' : 'none';
       login_popup.style.display = type;
+      
+      joinBtn.style.display = 'block';
+      loginBtn.style.display = 'block';
     }
 
   </script>
@@ -135,16 +143,14 @@
 <!--위에 이거 axois 가져온거래요-->
 <script type="text/javascript">
 
-        const pwd1 = document.querySelector('#userpw');
-        const pwd2 = document.querySelector('#userpw_check');
-        //const login_btn = document.querySelector('#login_submit');
-        const join_frm = document.querySelector('#join_form');
-        const userid_msg = document.querySelector('#userid_msg');
-        const userid = document.querySelector('#userid');
-        const join_btn = document.querySelector('#join_submit')
-
-
-
+    const pwd1 = document.querySelector('#userpw');
+    const pwd2 = document.querySelector('#userpw_check');
+    //const login_btn = document.querySelector('#login_submit');
+    const join_frm = document.querySelector('#join_form');
+    const userid_msg = document.querySelector('#userid_msg');
+    const userid = document.querySelector('#userid');
+    const join_btn = document.querySelector('#join_submit');
+    const userpw_li = document.querySelector('#userpw_li');
 
     //===============아이디 체크하는 부분===========================================     
     async function userid_check(){
@@ -157,10 +163,12 @@
             userid_msg.innerHTML = "You can use this ID."
             userid_msg.style.color = 'blue';
             userid_msg.style.display = 'block';
+            userpw_li.style.margin = '0px 0px 8px 0px';
         }else{ // false이면(중복이면)
             userid_msg.innerHTML = 'This ID already exist.'
             userid_msg.style.color = 'red';
             userid_msg.style.display = 'block';
+            userpw_li.style.margin = '0px 0px 8px 0px';
         } 
     }
     userid.addEventListener('focusout',userid_check);

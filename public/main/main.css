@@ -4,8 +4,8 @@
     height: 300px;
     position: absolute;
     left: 25%;
-    top: 25%;
-    transform: translate(-50%);
+    top: 54%;
+    transform: translate(-50%,-50%);
   }
 
   #main_Btn> .pop_btn {
@@ -35,12 +35,14 @@
 
   .verticalLine{ /*수직선*/
       width: 20px;
-      height: 400px;
+      height: 800px;
       border-left: thin solid black;
       position: absolute;
       left: 50%;
-      top: 10%;
-        
+      top: 50%;
+      transform: translate(-50%,-50%);
+      animation: slide 2s;
+      animation-fill-mode: forwards;
   }
 
   /*----------------------------------------------*/
@@ -50,8 +52,52 @@
     color: black;
     position: absolute;
     left: 75%;
-    top: 22%;
-    transform: translate(-50%);
+    top: 50%;
+    transform: translate(-50%,-50%);
+  }
+
+  .intro{
+    animation: fadein 3s;
+    animation-fill-mode: forwards;
+  }
+
+  .popup{
+    animation: fadein 1s;
+    animation-fill-mode: forwards;
+  }
+
+  .background{
+    animation: fadein2 1s;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes fadein{
+    from{
+      opacity: 0;
+    }
+    to{
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadein2{
+    from{
+      opacity: 0;
+    }
+    to{
+      opacity: .6;
+    }
+  }
+
+  @keyframes slide{
+    from{
+      height:0px;
+      opacity: 0;
+    }
+    to{
+      height: 800px;
+      opacity: 1;
+    }
   }
 
 /*----------------------------------------------*/
@@ -62,7 +108,7 @@
     opacity: .6;
     position: fixed;
     top: 0;
-    display: none;    
+    display: none;
 }
 
 .login_popup_wrap{ 

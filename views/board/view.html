@@ -41,7 +41,7 @@
         <div id="main" class="center">
             <div class="write_gnb">
                 <ul class="left_gnb">
-                    <li class="gnb_name">{{item.writer}} ({{item.writer}})</li>
+                    <li class="gnb_name">{{item.writer}}</li>
                 </ul>
                 <ul class="right_gnb">
                     <li class="gnb_date">{{item.date}}&nbsp;&nbsp;</li>
@@ -55,7 +55,11 @@
 
         <!--FOOTER-->
         <div class="footer center">
+            {% if userid == item.writer %}
             <a href="/board/modify?id={{item.id}}"><input type="button" class="btn" value="MODIFY"></a>
+            {% else %}
+            <a onclick="alert('수정권한이 없습니다.')"><input type="button" class="btn" value="MODIFY"></a>
+            {% endif %}
             <a href="/board"><input type="button" class="btn" value="BACK"></a>
             <a id="deleteBtn"><input type="button" class="btn" value="DELETE"></a>
         </div>

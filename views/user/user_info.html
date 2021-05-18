@@ -1,7 +1,10 @@
-
         <div id = "user_center"  class="user_closed">
             <div class = "user_left">
-                <img class = "user_img" src = "/user/svgexport-1 (1).svg">
+                {% if userimage == '' %}
+                    <img src="/user/svgexport-1 (1).svg" class = "user_img">
+                {% else %}
+                    <img src="/{{userimage}}" class = "user_img">
+                {% endif %}
             </div>
             <p class = "user_divider"></p>
             <div class = "user_right">
@@ -11,7 +14,7 @@
                     <div class = "user_right_line"><span>아이디</span>{{info.userid}}</div>
                     <div class = "user_right_line"><span>이메일</span>{{info.usermail}}</div>
                     <div class = "user_right_line"><span>이름</span>{{info.username}}</div>
-                    {% endfor %}
+                {% endfor %}
                 </div>
             </div>
             <button class="user_close"><img class = "user_close_img open" src = "/user/svgexport-3.png"></button>

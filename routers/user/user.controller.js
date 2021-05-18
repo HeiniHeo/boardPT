@@ -27,8 +27,6 @@ let login_check = async(req,res)=>{
     }
 }
 
-
-
 let join_success = async(req,res)=>{
     let userid = req.body.userid;
     let userpw = req.body.userpw;
@@ -39,7 +37,7 @@ let join_success = async(req,res)=>{
     let userimage = userimage2.replace('public\\','')
 
     try{
-        let rst = await User.create({userid,userpw,username,usermail,userimage})
+        let rst = await User.create({userid,userpw,usermail,username,userimage})
     } catch(e){
         console.log(e);
     }
