@@ -4,7 +4,6 @@ const sequelize = require('sequelize');
 let login = (req,res)=>{
     let flag = req.query.flag;
     res.render('/index.html',{ flag });
-    console.log('mainpageda')
 }
 
 let login_check = async(req,res)=>{

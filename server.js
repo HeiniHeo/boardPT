@@ -9,18 +9,21 @@ const PORT = '3000';
 
 
 const {sequelize} = require('./models');
+const {Comment}=require('./models');
 const {User}=require('./models');
 const router = require('./routers/index');
 //console.log(router);
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 app.set('view engine', 'html');
 nunjucks.configure('views', {
     express:app,
 });
 
 app.use(cors());
+
 app.use(session({
     secret:'aaa',
     resave:false,

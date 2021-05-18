@@ -5,8 +5,6 @@ const multer = require('multer');
 const path = require('path');
 
 
-
-/*  사진업로드 기능은 주석처리 , npm install multer */ 
 const upload=multer({
     storage:multer.diskStorage({
         destination:function(req,file,callback){

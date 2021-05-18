@@ -37,7 +37,34 @@
 
 .footer > a:nth-child(1){float:right; margin-left:30px}
 .footer > a:nth-child(3){float:right;}
+/*  댓글 관련 CSS */
+.entcmt{
+    margin: 50px auto;
+}
+.entcmt>p{
+    float:left;
+    display:block;
+    padding-left:10px;
+    padding-right:10px;
+}
 
+#comment_content{
+    width:400px;
+}
+.newcmt>p{
+    float:left;
+    display:block;
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.newcmt>div>p{
+    float:left;
+    display:block;
+    padding-left:10px;
+    padding-right:10px;
+}
+/*  댓글 관련 CSS 여기까지 */
 .user_closed{
     top: -2000px;
     transition: all 1s ease-in-out;
