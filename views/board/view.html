@@ -176,31 +176,6 @@
 
     </script>
 
-    <script type="text/javascript">
-        let deleteBtn = document.querySelector('#deleteBtn');
-
-        deleteBtn.addEventListener('click', function () {
-            if (confirm("정말 삭제하시겠습니까?")) {
-                location.href = "/board/delete?id={{item.id}}"
-            } else {
-                event.preventDefault();
-            }
-        })
-    </script>
-    <script type="text/javascript">
-    // let cmt_like_btn = document.querySelector('.cmt_like_btn');
-    // let cmt_like = document.querySelector('.cmt_like');
-    // console.log(cmt_like_btn,cmt_like)
-
-    // async function putLike(){
-    //     let addLike = await axios.post('http://localhost:3000/comment/',{
-    //                 cmt_like:cmt_like,
-    //             })
-    //     cmt_like.innerHTML = ele.commentLike;
-    // }
-    // cmt_like_btn.addEventListener('click',putLike)
-    </script>
-
     {% endfor %}
 
 

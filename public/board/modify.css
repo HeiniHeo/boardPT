@@ -11,3 +11,13 @@
 #footer > a{
     float: left;
 }
+
+.user_closed{
+    top: -100%;
+    transition: all 1s ease-in-out;
+}
+
+.user_open{
+    top: 150px;
+    transition: all 1s ease-in-out;
+}
