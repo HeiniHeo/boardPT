@@ -51,18 +51,21 @@
     height: 300px;
     color: black;
     position: absolute;
+    overflow: hidden;
     left: 75%;
     top: 50%;
     transform: translate(-50%,-50%);
   }
 
+  /* 애니메이션 */
   .intro{
-    animation: fadein 3s;
+    position:absolute;
+    animation: fadein 2s;
     animation-fill-mode: forwards;
   }
 
   .popup{
-    animation: fadein 1s;
+    animation: fadein3 1s;
     animation-fill-mode: forwards;
   }
 
@@ -74,9 +77,11 @@
   @keyframes fadein{
     from{
       opacity: 0;
+      left: -28%;
     }
     to{
       opacity: 1;
+      left: 5%;
     }
   }
 
@@ -97,6 +102,17 @@
     to{
       height: 800px;
       opacity: 1;
+    }
+  }
+
+  @keyframes fadein3{
+    from{
+      opacity: 0;
+      left: -20%;
+    }
+    to{
+      opacity: 1;
+      left: 10%;
     }
   }
 
