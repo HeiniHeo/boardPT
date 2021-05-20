@@ -165,7 +165,7 @@
         userid_msg.style.display = 'block';
         userpw_li.style.margin = '0px 0px 8px 0px';
       } else { // false이면(중복이면)
-        userid_msg.innerHTML = 'This ID already exist.'
+        userid_msg.innerHTML = 'This ID already exists.'
         userid_msg.style.color = 'red';
         userid_msg.style.display = 'block';
         userpw_li.style.margin = '0px 0px 8px 0px';
@@ -212,7 +212,7 @@
       let pwd_check = password_check(); //boolean
       let blank_check = null_check();
       if (pwd_check == false) {
-        alert('CHECK YOUR PASSWORD');
+        alert('Check the password.');
         pwd1.value = '';
         pwd2.value = '';
         pwd1.focus();
@@ -221,7 +221,7 @@
       }
       if (blank_check == false) {
         console.log('asdf')
-        alert('FILL YOUR BLANK')
+        alert('Fill the blank(s).')
 
         return
       }

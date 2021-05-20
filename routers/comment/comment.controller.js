@@ -4,6 +4,23 @@ const { Comment } = require('../../models/index');
 const Sequelize = require('sequelize');
 
 
+let loadComment = async (req, res) => {
+    // let commentWriter = req.body.writer;
+    // let commentContent = req.body.comment_content;
+    // let commentAt = req.body.itemid;
+    // let commentList = await Comment.findAll({
+    //     where: {
+    //         commentAt: req.body.itemid,
+    //     },
+    //     order: [['id', 'ASC']],
+    // });
+
+    // res.json({
+    //     commentList,
+    // })
+
+};
+
 let addComment = async (req, res) => {
     let commentWriter = req.body.writer;
     let commentContent = req.body.comment_content;
@@ -20,15 +37,13 @@ let addComment = async (req, res) => {
         commentList,
     })
 
+    console.log(commentList)
+    console.log(commentResults)
 };
 
-let delComment = async (req,res) => {
-    await console.log(req.body.cmt_like)
 
-
-}
 
 module.exports = {
+    loadComment,
     addComment,
-    delComment
 };

@@ -60,8 +60,8 @@
             <a href="/board/modify?id={{item.id}}"><input type="button" class="btn" value="MODIFY"></a>
             <a id="deleteBtn"><input type="button" class="btn" value="DELETE"></a>
             {% else %}
-            <a onclick="alert('NOT AUTHORIZED.')"><input type="button" class="btn" value="MODIFY"></a>
-            <a onclick="alert('NOT AUTHORIZED')"><input type="button" class="btn" value="DELETE"></a>
+            <a onclick="alert('Writer accessible only.')"><input type="button" class="btn" value="MODIFY"></a>
+            <a onclick="alert('Writer accessible only.')"><input type="button" class="btn" value="DELETE"></a>
             {% endif %}
             <a href="/board"><input type="button" class="btn" value="BACK"></a>
         </div>
@@ -69,7 +69,7 @@
             let deleteBtn = document.querySelector('#deleteBtn');
 
             deleteBtn.addEventListener('click', function () {
-                if (confirm("DELETE?")) {
+                if (confirm("Are you sure to delete?")) {
                     location.href = "/board/delete?id={{item.id}}"
                 } else {
                     event.preventDefault();
@@ -77,7 +77,7 @@
             })
         </script>
 
-        <div class="comment center">
+        <!-- <div class="comment center">
             <div class="entcmt">
                 <input type="text" id="userid" value="{{userid}}" style="display:none">
                 <p>{{userid}}</p>
@@ -87,42 +87,24 @@
             <input type="text" id="itemid" name="itemid" value="{{item.id}}" style="display:none">
             <ul class="newcmt">
 
-<<<<<<< HEAD
-
-
-        <div class="comment center">
-
-            <div class="entcmt">
-                <input type="text" id="userid" value="{{userid}}" style="display:none">
-                <p>{{userid}}</p>
-                <p><input type="text" id="comment_content" name="comment_content"></p>
-                <p><input type="button" value="등록" id="addcomment"></p>
-            </div>
-
-            <input type="text" id="itemid" name="itemid" value="{{item.id}}" style="display:none">
-
-            <ul class="newcmt">
-
-=======
->>>>>>> 719b6ab374d4db7440829e65ba41bd13e7dbb767
             </ul>
 
-        </div>
+        </div> -->
     </div>
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         let comment_content = document.querySelector('#comment_content');
         let itemid = document.querySelector('#itemid');
         let userid = document.querySelector('#userid');
         let addcomment = document.querySelector('#addcomment');
         let newcmt = document.querySelector('.newcmt')
-        const useridList = [];
-        const writerList = [];
-        const delList = [];
-        loadComment();
+        // const useridList = [];
+        // const writerList = [];
+        // const delList = [];
+        initComment();
 
 
-        async function loadComment() {
-            let addComment = await axios.post('http://localhost:3000/comment/', {
+        async function initComment() {
+            let loadComment = await axios.post('http://localhost:3000/comment/', {
                 comment_content: comment_content.value,
                 itemid: itemid.value,
                 writer: userid.value,
@@ -130,7 +112,7 @@
             comment_content.value = '';
 
             while (newcmt.hasChildNodes()) { newcmt.removeChild(newcmt.firstChild); }
-            addComment.data.commentList.forEach(ele => {
+            loadComment.data.commentList.forEach(ele => {
                 const li = document.createElement('li');
                 const cmt_box = document.createElement('div');
                 const cmt_userid = document.createElement('p');
@@ -142,94 +124,95 @@
                 cmt_content.innerHTML = ele.commentContent;
                 cmt_date.innerHTML = ele.commentDate;
                 // cmt_like.innerHTML = ele.commentLike;
-                cmt_del_btn.innerHTML = '삭제';
+                // cmt_del_btn.innerHTML = '삭제';
 
                 cmt_box.appendChild(cmt_userid);
                 cmt_box.appendChild(cmt_content);
                 cmt_box.appendChild(cmt_date);
-                cmt_box.appendChild(cmt_like);
-                cmt_box.appendChild(cmt_like_btn);
+                // cmt_box.appendChild(cmt_like);
+                // cmt_box.appendChild(cmt_like_btn);
 
-                cmt_like_btn.className = "cmt_like_btn";
-                cmt_like.className = "cmt_like";
+                // cmt_like_btn.className = "cmt_like_btn";
+                // cmt_like.className = "cmt_like";
 
                 newcmt.appendChild(cmt_box);
 
 
                 //배열들
-                useridList.push(userid);
-                writerList.push(cmt_userid.innerHTML);
-                delList.push(cmt_del_btn);
+                // useridList.push(userid);
+                // writerList.push(cmt_userid.innerHTML);
+                // delList.push(cmt_del_btn);
 
             });
 
-                for (i = 0; i < btnList.length; i++){
-                    delList[i].addEventListener('click',async function putLike(){
-                        let delComment = await axios.post('http://localhost:3000/comment/del',{})
-                        if(userid=writerList[i]){
-                            console.log('같은놈')
-                        } else{
-                            console.log('다른놈')
-                        }
-                    })
-                }
+                // for (i = 0; i < btnList.length; i++){
+                //     delList[i].addEventListener('click',async function putLike(){
+                //         let delComment = await axios.post('http://localhost:3000/comment/del',{})
+                //         if(userid=writerList[i]){
+                //             console.log('같은놈')
+                //         } else{
+                //             console.log('다른놈')
+                //         }
+                //     })
+                // }
         }
 
-            async function putLike() {
-                let addLike = await axios.post('http://localhost:3000/comment/', {
-                    cmt_like: cmt_like,
-                })
-                cmt_like.innerHTML = ele.commentLike;
-            }
+            // async function putLike() {
+            //     let addLike = await axios.post('http://localhost:3000/comment/', {
+            //         cmt_like: cmt_like,
+            //     })
+            //     cmt_like.innerHTML = ele.commentLike;
+            // }
             
     
 
-        async function postComment() {
-            if (comment_content != '') {
-                let addComment = await axios.post('http://localhost:3000/comment/', {
-                    comment_content: comment_content.value,
-                    itemid: itemid.value,
-                    writer: userid.value,
-                })
-                comment_content.value = '';
+        // async function postComment() {
+        //     if (comment_content != '') {
+        //         let addComment = await axios.post('http://localhost:3000/comment/', {
+        //             comment_content: comment_content.value,
+        //             itemid: itemid.value,
+        //             writer: userid.value,
+        //         })
+        //         console.log(addComment)
+        //         comment_content.value = '';
 
-                while (newcmt.hasChildNodes()) { newcmt.removeChild(newcmt.firstChild); }
-                addComment.data.commentList.forEach(ele => {
-                    const li = document.createElement('li');
-                    const cmt_box = document.createElement('div');
-                    const cmt_userid = document.createElement('p');
-                    const cmt_content = document.createElement('p');
-                    const cmt_date = document.createElement('p');
-                    const cmt_like = document.createElement('p');
-                    const cmt_like_btn = document.createElement('button');
-                    cmt_userid.innerHTML = ele.commentWriter;
-                    cmt_content.innerHTML = ele.commentContent;
-                    cmt_date.innerHTML = ele.commentDate;
-                    cmt_like.innerHTML = ele.commentLike;
-                    cmt_like_btn.innerHTML = '乃';
+        //         while (newcmt.hasChildNodes()) { newcmt.removeChild(newcmt.firstChild); }
+        //         addComment.data.commentList.forEach(ele => {
+        //             const li = document.createElement('li');
+        //             const cmt_box = document.createElement('div');
+        //             const cmt_userid = document.createElement('p');
+        //             const cmt_content = document.createElement('p');
+        //             const cmt_date = document.createElement('p');
+        //             // const cmt_like = document.createElement('p');
+        //             // const cmt_like_btn = document.createElement('button');
+        //             cmt_userid.innerHTML = ele.commentWriter;
+        //             cmt_content.innerHTML = ele.commentContent;
+        //             cmt_date.innerHTML = ele.commentDate;
+        //             // cmt_like.innerHTML = ele.commentLike;
+        //             // cmt_like_btn.innerHTML = '乃';
 
-                    cmt_box.appendChild(cmt_userid);
-                    cmt_box.appendChild(cmt_content);
-                    cmt_box.appendChild(cmt_date);
-                    cmt_box.appendChild(cmt_like);
-                    cmt_box.appendChild(cmt_like_btn);
+        //             cmt_box.appendChild(cmt_userid);
+        //             cmt_box.appendChild(cmt_content);
+        //             cmt_box.appendChild(cmt_date);
+        //             // cmt_box.appendChild(cmt_like);
+        //             // cmt_box.appendChild(cmt_like_btn);
 
-                    newcmt.appendChild(cmt_box);
+        //             newcmt.appendChild(cmt_box);
 
-                    cmt_like_btn.className = "cmt_like_btn";
-                    cmt_like.className = "cmt_like";
+        //             // cmt_like_btn.className = "cmt_like_btn";
+        //             // cmt_like.className = "cmt_like";
 
-                });
-            }
-        }
+        //         });
+        //     }
+        // }
 
-        addcomment.addEventListener('click', postComment);
+        // addcomment.addEventListener('click', postComment);
 
 
-        function putLike(event){
-            console.log(event.target)
-        }
-    </script>
+        // function putLike(event){
+        //     console.log(event.target)
+        // }
+    </script> -->
 
     <script type="text/javascript">
         let deleteBtn = document.querySelector('#deleteBtn');
