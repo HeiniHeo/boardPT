@@ -76,6 +76,7 @@
                 }
             })
         </script>
+
     </div>
     <script type="text/javascript">
         let comment_content = document.querySelector('#comment_content');
@@ -83,8 +84,11 @@
         let userid = document.querySelector('#userid');
         let addcomment = document.querySelector('#addcomment');
         let newcmt = document.querySelector('.newcmt')
-
+        const useridList = [];
+        const writerList = [];
+        const delList = [];
         loadComment();
+
 
         async function loadComment() {
             let addComment = await axios.post('http://localhost:3000/comment/', {
@@ -101,13 +105,13 @@
                 const cmt_userid = document.createElement('p');
                 const cmt_content = document.createElement('p');
                 const cmt_date = document.createElement('p');
-                const cmt_like = document.createElement('p');
-                const cmt_like_btn = document.createElement('button');
+                // const cmt_like = document.createElement('p');
+                const cmt_del_btn = document.createElement('button');
                 cmt_userid.innerHTML = ele.commentWriter;
                 cmt_content.innerHTML = ele.commentContent;
                 cmt_date.innerHTML = ele.commentDate;
-                cmt_like.innerHTML = ele.commentLike;
-                cmt_like_btn.innerHTML = '乃';
+                // cmt_like.innerHTML = ele.commentLike;
+                cmt_del_btn.innerHTML = '삭제';
 
                 cmt_box.appendChild(cmt_userid);
                 cmt_box.appendChild(cmt_content);
@@ -116,10 +120,38 @@
                 cmt_box.appendChild(cmt_like_btn);
 
                 cmt_like_btn.className = "cmt_like_btn";
+                cmt_like.className = "cmt_like";
 
                 newcmt.appendChild(cmt_box);
+
+
+                //배열들
+                useridList.push(userid);
+                writerList.push(cmt_userid.innerHTML);
+                delList.push(cmt_del_btn);
+
             });
+
+                for (i = 0; i < btnList.length; i++){
+                    delList[i].addEventListener('click',async function putLike(){
+                        let delComment = await axios.post('http://localhost:3000/comment/del',{})
+                        if(userid=writerList[i]){
+                            console.log('같은놈')
+                        } else{
+                            console.log('다른놈')
+                        }
+                    })
+                }
         }
+
+            async function putLike() {
+                let addLike = await axios.post('http://localhost:3000/comment/', {
+                    cmt_like: cmt_like,
+                })
+                cmt_like.innerHTML = ele.commentLike;
+            }
+            
+    
 
         async function postComment() {
             if (comment_content != '') {
@@ -154,12 +186,30 @@
                     newcmt.appendChild(cmt_box);
 
                     cmt_like_btn.className = "cmt_like_btn";
+                    cmt_like.className = "cmt_like";
+
                 });
             }
         }
 
         addcomment.addEventListener('click', postComment);
 
+
+        function putLike(event){
+            console.log(event.target)
+        }
+    </script>
+
+    <script type="text/javascript">
+        let deleteBtn = document.querySelector('#deleteBtn');
+
+        deleteBtn.addEventListener('click', function () {
+            if (confirm("정말 삭제하시겠습니까?")) {
+                location.href = "/board/delete?id={{item.id}}"
+            } else {
+                event.preventDefault();
+            }
+        })
     </script>
 
     {% endfor %}
