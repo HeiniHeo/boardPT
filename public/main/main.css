@@ -57,6 +57,14 @@
     transform: translate(-50%,-50%);
   }
 
+  .title_login{
+    display: none;
+  }
+  
+  .title_join{
+    display: none;
+  }
+
   /* 애니메이션 */
   .intro{
     position:absolute;

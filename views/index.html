@@ -20,10 +20,12 @@
     <div class="verticalLine"> </div>
 
     <div id="copy_write">
-      <h1 class="intro">Create your noticeboard, <br />
+      <h1 class="title intro">Create your noticeboard, <br />
         <br />
         TRY NOW.
       </h1>
+      <h1 class="title_login intro">LOGIN</h1>
+      <h1 class="title_join intro">MEMBER JOIN</h1>
     </div>
   </div>
 
@@ -62,6 +64,9 @@
     let loginBtn = document.querySelector('.login_btn');
     let close_join = document.querySelector('.close_join');
     let close_login = document.querySelector('.close_login');
+    let title_login = document.querySelector('.title_login');
+    let title_join = document.querySelector('.title_join');
+    let title = document.querySelector('.title');
 
     joinBtn.addEventListener('click', popupSet_join);
     loginBtn.addEventListener('click', popupSet_login);
@@ -71,7 +76,10 @@
     function popupSet_join() {
       let join_popup_wrap = document.querySelector('.join_popup_wrap');
       let type2 = (join_popup_wrap.style.display == 'block') ? 'none' : 'block';
+      let type3 = (title_join.style.display == 'block') ? 'none' : 'block';
       join_popup_wrap.style.display = type2;
+      title_join.style.display = type3;
+      title.style.display = 'none';
 
       let joinPopup = document.querySelector('.join_popup');
       let type1 = (joinPopup.style.display == 'block') ? 'none' : 'block';
@@ -84,7 +92,10 @@
     function popupSet_login() {
       let loginPopup = document.querySelector('.login_popup_wrap');
       let type2 = (loginPopup.style.display == 'block') ? 'none' : 'block';
+      let type3 = (title_login.style.display == 'block') ? 'none' : 'block';
       loginPopup.style.display = type2;
+      title_login.style.display = type3;
+      title.style.display = 'none';
 
       let login_popup = document.querySelector('.login_popup');
       let type1 = (login_popup.style.display == 'block') ? 'none' : 'block';
@@ -97,7 +108,10 @@
     function closeJoin() {
       let join_popup_wrap = document.querySelector('.join_popup_wrap');
       let type1 = (join_popup_wrap.style.display == 'none') ? 'block' : 'none';
+      let type3 = (title_join.style.display == 'none') ? 'block' : 'none';
       join_popup_wrap.style.display = type1;
+      title_join.style.display = type3;
+      title.style.display = 'block';
 
       let joinPopup = document.querySelector('.join_popup');
       let type2 = (joinPopup.style.display == 'none') ? 'block' : 'none';
@@ -110,7 +124,10 @@
     function closeLogin() {
       let login_popup_wrap = document.querySelector('.login_popup_wrap');
       let type2 = (login_popup_wrap.style.display == 'none') ? 'block' : 'none';
+      let type3 = (title_login.style.display == 'none') ? 'block' : 'none';
       login_popup_wrap.style.display = type2;
+      title_login.style.display = type3;
+      title.style.display = 'block';
 
       let login_popup = document.querySelector('.login_popup');
       let type = (login_popup.style.display) == 'none' ? 'block' : 'none';
