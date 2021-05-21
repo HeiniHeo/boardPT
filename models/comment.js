@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const moment = require('moment');
 
 
-module.exports = class Board extends Sequelize.Model{
+module.exports = class Comment extends Sequelize.Model{
     static init(sequelize){
         return super.init({ 
             commentAt:{

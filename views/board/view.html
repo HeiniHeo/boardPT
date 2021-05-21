@@ -78,140 +78,89 @@
         </script>
 
     </div>
-    <!-- <script type="text/javascript">
+    <div class="comment center">
+         <div class="comment center">
+            <div class="entcmt">
+                <input type="text" id="userid" value="{{userid}}" style="display:none">
+                <p>{{userid}}</p>
+                <p><input type="text" id="comment_content" name="comment_content"></p>
+                <p><input type="button" value="등록" id="addcomment"></p>
+            </div>
+            <input type="text" id="itemid" name="itemid" value="{{item.id}}" style="display:none">
+            <ul class="newcmt">
+                
+            </ul>
+
+    <script type="text/javascript">
         let comment_content = document.querySelector('#comment_content');
         let itemid = document.querySelector('#itemid');
         let userid = document.querySelector('#userid');
         let addcomment = document.querySelector('#addcomment');
         let newcmt = document.querySelector('.newcmt')
-        // const useridList = [];
-        // const writerList = [];
-        // const delList = [];
+        const cmtList = [];
+        const writerList = [];
+        const delList = [];
         initComment();
 
 
         async function initComment() {
             let loadComment = await axios.post('http://localhost:3000/comment/', {
-                comment_content: comment_content.value,
                 itemid: itemid.value,
-                writer: userid.value,
             })
             comment_content.value = '';
 
             while (newcmt.hasChildNodes()) { newcmt.removeChild(newcmt.firstChild); }
-            loadComment.data.commentList.forEach(ele => {
+
+            for(let i=0;i<loadComment.data.commentList.length;i++){
                 const li = document.createElement('li');
                 const cmt_box = document.createElement('div');
                 const cmt_userid = document.createElement('p');
                 const cmt_content = document.createElement('p');
                 const cmt_date = document.createElement('p');
-                // const cmt_like = document.createElement('p');
                 const cmt_del_btn = document.createElement('button');
-                cmt_userid.innerHTML = ele.commentWriter;
-                cmt_content.innerHTML = ele.commentContent;
-                cmt_date.innerHTML = ele.commentDate;
-                // cmt_like.innerHTML = ele.commentLike;
-                // cmt_del_btn.innerHTML = '삭제';
-
+                const cmt_id = document.createElement('p')
+                cmt_userid.innerHTML = loadComment.data.commentList[i].commentWriter;
+                cmt_content.innerHTML = loadComment.data.commentList[i].commentContent;
+                cmt_date.innerHTML = loadComment.data.commentList[i].commentDate;
+                cmt_id.innerHTML = loadComment.data.commentList[i].id;
+                cmt_del_btn.innerHTML = '삭제';
                 cmt_box.appendChild(cmt_userid);
                 cmt_box.appendChild(cmt_content);
                 cmt_box.appendChild(cmt_date);
-                // cmt_box.appendChild(cmt_like);
-                // cmt_box.appendChild(cmt_like_btn);
-
-                // cmt_like_btn.className = "cmt_like_btn";
-                // cmt_like.className = "cmt_like";
-
+                cmt_box.appendChild(cmt_del_btn);
+                cmt_box.appendChild(cmt_id);
+                cmt_id.setAttribute('style','display:none');
+                cmt_del_btn.setAttribute('href','#');
+                cmt_del_btn.setAttribute('class',`${i} delbtn ${cmt_id.innerHTML}`)
                 newcmt.appendChild(cmt_box);
+                newcmt.setAttribute('class','newcmt')
 
-
-                //배열들
-                // useridList.push(userid);
-                // writerList.push(cmt_userid.innerHTML);
-                // delList.push(cmt_del_btn);
-
-            });
-
-                // for (i = 0; i < btnList.length; i++){
-                //     delList[i].addEventListener('click',async function putLike(){
-                //         let delComment = await axios.post('http://localhost:3000/comment/del',{})
-                //         if(userid=writerList[i]){
-                //             console.log('같은놈')
-                //         } else{
-                //             console.log('다른놈')
-                //         }
-                //     })
-                // }
+                delList.push(cmt_del_btn);
+            };
+           delList.forEach((value,key,array)=>{
+               value.addEventListener('click', async function(){            
+                let valueArray = value.className.split(' ');
+                    let delComment = await axios.post('http://localhost:3000/comment/del',{
+                        cmtid:valueArray[2]
+                    })
+                    initComment();
+               })
+            })
         }
 
-            // async function putLike() {
-            //     let addLike = await axios.post('http://localhost:3000/comment/', {
-            //         cmt_like: cmt_like,
-            //     })
-            //     cmt_like.innerHTML = ele.commentLike;
-            // }
-            
-    
-
-        // async function postComment() {
-        //     if (comment_content != '') {
-        //         let addComment = await axios.post('http://localhost:3000/comment/', {
-        //             comment_content: comment_content.value,
-        //             itemid: itemid.value,
-        //             writer: userid.value,
-        //         })
-        //         console.log(addComment)
-        //         comment_content.value = '';
-
-        //         while (newcmt.hasChildNodes()) { newcmt.removeChild(newcmt.firstChild); }
-        //         addComment.data.commentList.forEach(ele => {
-        //             const li = document.createElement('li');
-        //             const cmt_box = document.createElement('div');
-        //             const cmt_userid = document.createElement('p');
-        //             const cmt_content = document.createElement('p');
-        //             const cmt_date = document.createElement('p');
-        //             // const cmt_like = document.createElement('p');
-        //             // const cmt_like_btn = document.createElement('button');
-        //             cmt_userid.innerHTML = ele.commentWriter;
-        //             cmt_content.innerHTML = ele.commentContent;
-        //             cmt_date.innerHTML = ele.commentDate;
-        //             // cmt_like.innerHTML = ele.commentLike;
-        //             // cmt_like_btn.innerHTML = '乃';
-
-        //             cmt_box.appendChild(cmt_userid);
-        //             cmt_box.appendChild(cmt_content);
-        //             cmt_box.appendChild(cmt_date);
-        //             // cmt_box.appendChild(cmt_like);
-        //             // cmt_box.appendChild(cmt_like_btn);
-
-        //             newcmt.appendChild(cmt_box);
-
-        //             // cmt_like_btn.className = "cmt_like_btn";
-        //             // cmt_like.className = "cmt_like";
-
-        //         });
-        //     }
-        // }
-
-        // addcomment.addEventListener('click', postComment);
-
-
-        // function putLike(event){
-        //     console.log(event.target)
-        // }
-    </script> -->
-
-    <script type="text/javascript">
-        let deleteBtn = document.querySelector('#deleteBtn');
-
-        deleteBtn.addEventListener('click', function () {
-            if (confirm("정말 삭제하시겠습니까?")) {
-                location.href = "/board/delete?id={{item.id}}"
-            } else {
-                event.preventDefault();
-            }
-        })
+        async function postComment() {
+            if (comment_content != '') {
+                let addComment = await axios.post('http://localhost:3000/comment/add', {
+                    comment_content: comment_content.value,
+                    itemid: itemid.value,
+                    writer: userid.value,
+                })
+                initComment();
+            };
+        };
+        addcomment.addEventListener('click', postComment);
     </script>
+
 
     {% endfor %}
 
