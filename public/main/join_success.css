@@ -17,6 +17,24 @@ h1{
     text-transform: uppercase;
 }
 
+/* .join_title> img{
+    display: inline-block;
+    margin-top: -30px;
+    animation-name: slideRight;
+    animation-fill-mode: forwards;
+    animation-delay: 0.25s;
+    transition: 1.8s ease-in-out; 
+}
+
+@keyframes slideRight{
+    from{
+        margin-right: -10%;
+        opacity: 0;
+    }to{
+        margin-right: 0%;
+        opacity: 1;
+    }
+} */
 
 h1>span{
     opacity: 0;
@@ -43,6 +61,8 @@ h1>span{
 
 }
 
+
+
 .join_success_msg{
     width: 600px;
     height: 100px;
@@ -59,6 +79,7 @@ h1>span{
 }
 
 .join_success_msg > a {
+    display: block;
     color: green;
     text-decoration: none;
     animation-name: slide_right;
@@ -67,8 +88,9 @@ h1>span{
     transform: scale(1);
     transition: ease-in-out;
 }
+
 .join_success_msg > a:hover{
-    transform: scale(1.5);
+    transform: scale(1.05);
 }
 
 

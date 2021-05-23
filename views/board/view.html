@@ -80,11 +80,12 @@
     </div>
     <div class="comment center">
          <div class="comment center">
+             <p class="comment_head">Comment</p>
             <div class="entcmt">
                 <input type="text" id="userid" value="{{userid}}" style="display:none">
                 <p>{{userid}}</p>
                 <p><input type="text" id="comment_content" name="comment_content"></p>
-                <p><input type="button" value="등록" id="addcomment"></p>
+                <p><input type="button" value="POST" id="addcomment"></p>
             </div>
             <input type="text" id="itemid" name="itemid" value="{{item.id}}" style="display:none">
             <ul class="newcmt">
@@ -119,11 +120,25 @@
                 const cmt_date = document.createElement('p');
                 const cmt_del_btn = document.createElement('button');
                 const cmt_id = document.createElement('p')
+                
                 cmt_userid.innerHTML = loadComment.data.commentList[i].commentWriter;
+                cmt_userid.style.fontWeight='bold'
+                cmt_userid.style.fontSize='18px'
+                cmt_userid.style.width='60px'
+                
                 cmt_content.innerHTML = loadComment.data.commentList[i].commentContent;
+                
                 cmt_date.innerHTML = loadComment.data.commentList[i].commentDate;
+                cmt_date.style.fontSize='12px'
+                cmt_date.style.color='gray'
                 cmt_id.innerHTML = loadComment.data.commentList[i].id;
-                cmt_del_btn.innerHTML = '삭제';
+                
+                cmt_del_btn.innerHTML = 'X'
+                cmt_del_btn.style.cursor='pointer'
+                cmt_del_btn.style.background='none'
+                cmt_del_btn.style.fontWeight='bolder' 
+                cmt_del_btn.style.marginTop='15px'
+                
                 cmt_box.appendChild(cmt_userid);
                 cmt_box.appendChild(cmt_content);
                 cmt_box.appendChild(cmt_date);
@@ -134,6 +149,7 @@
                 cmt_del_btn.setAttribute('class',`${i} delbtn ${cmt_id.innerHTML}`)
                 newcmt.appendChild(cmt_box);
                 newcmt.setAttribute('class','newcmt')
+                
 
                 delList.push(cmt_del_btn);
             };

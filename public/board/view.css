@@ -37,20 +37,59 @@
 
 .footer > a:nth-child(1){float:right; margin-left:30px}
 .footer > a:nth-child(3){float:right;}
+
+
 /*  댓글 관련 CSS */
 .entcmt{
-    margin: 50px auto;
+    margin: 50px auto 0px auto;
 }
+.comment_head{
+    margin-top: 120px;
+    font-size: 40px;
+    font-weight: bolder;
+    border-bottom: 1.5px solid black;
+    height: 60px;
+}
+
 .entcmt>p{
     float:left;
     display:block;
-    padding-left:10px;
-    padding-right:10px;
+    font-size: 24px;
+    /* padding-left:10px;
+    padding-right:10px; */
+    font-weight: bolder;
+    height: 40px;
+    
+}
+
+
+.newcmt{
+    margin: 6% 0%;
 }
 
 #comment_content{
     width:400px;
+    height: 30px;
+    margin: auto 30px;
 }
+#addcomment{
+    padding: 1px;
+    box-sizing: border-box;
+    margin: 1px auto;
+    width: 55px;
+    height: 33px;
+    border: 1px solid black;
+    background: black;
+    transition: .3s ease-in-out;
+    color: white;
+    border-radius: 3.5px;
+    cursor: pointer;
+}
+#addcomment:hover{
+    background: white;
+    color: black;
+}
+
 .newcmt>p{
     float:left;
     display:block;
@@ -58,13 +97,27 @@
     padding-right:10px;
 }
 
+.newcmt> div{
+    width: 700px;
+    height: 40px;
+    border-bottom: 1px solid #ededed;
+    font-size: 18px;
+}
+
 .newcmt>div>p{
     float:left;
     display:block;
     padding-left:10px;
     padding-right:10px;
+    margin-top: 10px;
+    
 }
+
+
+
 /*  댓글 관련 CSS 여기까지 */
+
+
 
 .user_closed{
     top: -100%;
