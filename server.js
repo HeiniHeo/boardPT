@@ -5,7 +5,7 @@ const nunjucks = require('nunjucks');
 const cors = require('cors');
 const mysql = require('mysql');
 const session = require('express-session');
-const PORT = '3000';
+const PORT = '3001';
 
 
 const {sequelize} = require('./models');
